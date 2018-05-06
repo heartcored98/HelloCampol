@@ -1,0 +1,35 @@
+body {
+  background-color: aquamarine;
+  margin: 0 auto;
+	width: 600px;
+	text-align: center;
+}
+/*
+@media only screen and (max-width :767px)
+	.ui.menu > .ui.container {
+		width : 100% !important;
+		margin-left : 0em !important;
+		margin-right : 0em !important;
+		
+}
+*/
+#ss
+{/*
+	position: absolute;
+	height: 200px;
+	width: 400px;
+	top: 50%;
+	left: 50%;*/
+	background-color: transparent;
+	border-color : transparent;
+	position: fixed;
+  top: 60%;
+  left: 50%;
+	margin: 0 auto;
+  transform: translate(-50%, -50%);
+ }
+
+.massive.ui.button{
+	width : 500px !important;
+	height : 100px;
+}
