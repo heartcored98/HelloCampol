@@ -25,11 +25,15 @@ body {
 	position: fixed;
   top: 60%;
   left: 50%;
+	width : 80%;
 	margin: 0 auto;
   transform: translate(-50%, -50%);
  }
 
 .massive.ui.button{
+	/*width : 90% !important;
+	height : 30%;*/
+  
 	width : 500px !important;
 	height : 100px;
 }
