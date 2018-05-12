@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width" initial-scale=1.0>
 
-    <title>Request!</title>
-		
+    <title>Request</title>
+		<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="Semantic/semantic.css">
 		<script
 			src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -13,53 +13,35 @@
 			crossorigin="anonymous"></script>
 		<script src="Semantic/semantic.js"></script>
 		
+		<link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="./request.css" rel="stylesheet" />
+		
     <!--link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />-->
 
 		
   </head>
   <body>
 	
-		<div class="ui fixed inverted menu">
-			<div class="ui container">
-				<a href="#" class="header item">
-					<img class="logo" src="assets/images/logo.png">
-					Project Name
+		<div class="ui top fixed inverted segment" id="header">
+			<div class="ui top inverted secondary pointing menu">
+				<a class="item" id="redir_request">
+					해야 할 일
 				</a>
-				<a href="#" class="item">Home</a>
-				<div class="ui simple dropdown item">
-					Dropdown <i class="dropdown icon"></i>
-					<div class="menu">
-						<a class="item" href="#">Link Item</a>
-						<a class="item" href="#">Link Item</a>
-						<div class="divider"></div>
-						<div class="header">Header Item</div>
-						<div class="item">
-							<i class="dropdown icon"></i>
-							Sub Menu
-							<div class="menu">
-								<a class="item" href="#">Link Item</a>
-								<a class="item" href="#">Link Item</a>
-							</div>
-						</div>
-						<a class="item" href="#">Link Item</a>
-					</div>
+				<a class="active item" id="redir_notice">
+					공지하기
+				</a>
+				<div class="right menu">
+					<a class="item">
+						<i class="fas fa-home"></i>
+					</a>
 				</div>
 			</div>
 		</div>
-		
-		<h1>Request page!</h1> 
 
 		
 		
-		
-		
-		
-		
-		
-		<!--
-		<script src="jquery/js/jquery-1.9.0.min.js"></script>
+		<script src="jquery/js/jquery-3.3.1.min.js"></script>
     <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
-    <script src="./capital_game.js"></script> -->
+    <script src="./request.js"></script>
   </body>
 </html>

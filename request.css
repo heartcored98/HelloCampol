@@ -1,0 +1,23 @@
+.ui.segment{
+	margin-bottom: 0px !important;
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;
+}
+
+.ui.menu{
+	margin-top: 0.5rem !important;
+	margin-bottom: 0px !important;
+}
+
+.ui.menu.two.item .item {
+    width: 50% !important;
+}
+
+.ui.stackable.menu{
+	flex-direction: row !important;
+}
+
+#map {
+	height: 40%;
+	width: 100%;
+}
