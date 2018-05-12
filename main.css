@@ -3,6 +3,7 @@ body {
   margin: 0 auto;
 	text-align: center;
 }
+
 /*
 @media only screen and (max-width :767px)
 	.ui.menu > .ui.container {
@@ -30,6 +31,41 @@ body {
  }
 
 .massive.ui.button{
-	width : 90% !important;
-	height : 30%;
+	/*width : 90% !important;
+	height : 30%;*/
+  
+	width : 500px !important;
+	height : 100px;
+}
+
+/*-------Mainpage UI section-------*/
+
+body, html {
+	height: 100%;
+}
+
+.bg {
+	/* The image used */
+	background-image: url("assets/BackgroundImg.jpg");
+
+	/* Full height */
+	height: 100%;
+
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#MainPageLogo {
+	margin: 0% 5% 0% 5%;
+	padding-top: 60%;
+}
+#MainPageComment {
+	margin-top: 0;
+	margin-bottom:30px;
+	color: white;
+}
+#LogoSpacer {
+	height: 60%;
 }
