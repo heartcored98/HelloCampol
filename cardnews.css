@@ -1,0 +1,74 @@
+body{
+    font-family: 'Noto Sans CJK KR light';
+    font-weight: bold;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 60%;
+}
+
+.swiper-pagination{
+    position: relative;
+    margin-top: 15px;
+}
+
+#cardnewstitle{
+    text-align: center;
+    margin-top:10px;
+}
+
+#cardnewsimg{
+    width: 100%;
+
+    margin-top: 10px;
+}
+
+#selectionwrap{
+    margin-top:10px
+}
+
+.selection img{
+    margin: auto;
+    display: block;
+}
+#snsupload{
+    margin-top:30px
+}
+#snsupload img{
+    margin: auto;
+    display: block;
+}
+
+.traffic{}
+
+.dormitory{
+    margin-top:15px;
+}
+
+.laboratory{
+    margin-top: 15px;
+}
+
+.drinking{
+    margin-top:10px;
+}
