@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale=1.0>
+
+    <title>CardNews</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" type="text/css" href="Semantic/semantic.css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="Semantic/semantic.js"></script>
+
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="jquery/css/swiper.min.css" rel="stylesheet"/>
+    <link href="./request.css" rel="stylesheet" />
+    <link href="./cardnews.css" rel="stylesheet"/>
+    <!--link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />-->
+
+
+</head>
+<body>
+
+<div class="ui top fixed inverted segment" id="header">
+    <div class="ui top inverted secondary pointing menu">
+        <a class="item" id="redir_request">
+            해야 할 일
+        </a>
+        <a class="active item" id="redir_notice">
+            공지하기
+        </a>
+        <div class="right menu">
+            <a class="item">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="cardnewstitle">
+    실험실 안전
+</div>
+
+<div id="cardnewsimg">
+    <div class="swiper-container">
+        <div id="cont" class="swiper-wrapper">
+            <div class="swiper-slide"><img src="./cardnews/laboratory safety/img1.jpg" width="80%"/></div>
+            <div class="swiper-slide"><img src="./cardnews/laboratory safety/img2.jpg" width="80%"/></div>
+            <div class="swiper-slide"><img src="./cardnews/laboratory safety/img3.jpg" width="80%"/></div>
+            <div class="swiper-slide"><img src="./cardnews/laboratory safety/img4.jpg" width="80%"/></div>
+            <div class="swiper-slide"><img src="./cardnews/laboratory safety/img5.jpg" width="80%"/></div>
+            <div class="swiper-slide"><img src="./cardnews/laboratory safety/img6.jpg" width="80%"/></div>
+
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+
+    </div>
+</div>
+<div id="selectionwrap">
+    <div class="selection traffic"><img src="./cardnews/selection/교통안전.jpg" id="trafficimg" width="50%"/></div>
+    <div class="selection dormitory"><img src="./cardnews/selection/기숙사 안전.jpg" id="dormitoryimg" width="50%"/></div>
+    <div class="selection laboratory"><img src="./cardnews/selection/실험실안전.jpg" id="laboratoryimg" width="50%"/></div>
+    <div class="selection drinking"><img src="./cardnews/selection/음주안전.jpg" id="drinkingimg" width="50%"/></div>
+</div>
+
+<div id="snsupload"><img src="./cardnews/selection/sns.jpg" width="30%"/></div>
+
+
+
+<script src="jquery/js/jquery-3.3.1.min.js"></script>
+<script src="jquery/js/swiper.min.js"></script>
+<script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="./request.js"></script>
+<script src="cardnews.js"></script>
+</body>
+</html>
