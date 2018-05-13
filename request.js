@@ -61,17 +61,21 @@ $(document).ready(function () {
 
     // ======= Card Drawing Part ======= //
     var redraw_task_left = function () {
-
-
-        var template = $("#task-left-template").html();
         $(".ui.active.centered.inline.text.loader").css("display", "none");
 
-        for (var i = 0; i < task_left.length; i++) {
-            console.log("carding", i);
-            var data = task_left[i].payload;
-            data["keyvalue"] = task_left[i].key;
-            var taskbar = Mustache.render(template, data);
-            $("ul").append(taskbar)
+        if (task_left.length == 0) {
+            document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
+        }
+        else {
+            var template = $("#task-left-template").html();
+
+            for (var i = 0; i < task_left.length; i++) {
+                console.log("carding", i);
+                var data = task_left[i].payload;
+                data["keyvalue"] = task_left[i].key;
+                var taskbar = Mustache.render(template, data);
+                $("ul").append(taskbar)
+            }
         }
         // var key = document.getElementById('cardnews').getAttribute('value');
         // console.log('get key', key);
@@ -106,7 +110,7 @@ $(document).ready(function () {
         // TODO : Delete corresponding task left thing on local list.
     });
 
-    $(document).on('click', "#finished", function () {
+    $(document).on('click', "#trashed", function () {
         var deletecard = $(this).closest("li");
         var deletingKey = deletecard.find("p").html();
         var temp_ref = ref.child(deletingKey).update({flag_done: -1});
