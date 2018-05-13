@@ -31,21 +31,28 @@ $(document).ready(function () {
     ref = database.ref("TaskList");
     var task_left = [];
     var task_done = [];
+    var task_trash = [];
+    $(".ui.active.centered.inline.text.loader").css("display", "none"); //BS. edited on 5/14 8am
 
 
     // ======= Manipulate List Data ======= //
     var update_task = function () {
+        document.getElementById('ulcontent').innerHTML = "";
+        $(".ui.active.centered.inline.text.loader").css("display", "block");
 
         ref.once("value", function (snapshot) {
             snapshot.forEach(function (child) {
                 var child_value = child.val();
                 var key = child.key;
                 var task = {"key": key, "payload": child_value}
-                if (child_value.flag_done) {
+                if (child_value.flag_done == 1) {
                     task_done.push(task);
                 }
-                else {
+                else if (child_value.flag_done == 0) {
                     task_left.push(task);
+                }
+                else {
+                    task_trash.push(task);
                 }
             });
             redraw_task_left();
@@ -54,13 +61,20 @@ $(document).ready(function () {
 
     // ======= Card Drawing Part ======= //
     var redraw_task_left = function () {
+
+
         var template = $("#task-left-template").html();
+        $(".ui.active.centered.inline.text.loader").css("display", "none");
 
         for (var i = 0; i < task_left.length; i++) {
-            console.log("carding", i)
-            var taskbar = Mustache.render(template, task_left[i].payload);
-            $("body").append(taskbar)
+            console.log("carding", i);
+            var data = task_left[i].payload;
+            data["keyvalue"] = task_left[i].key;
+            var taskbar = Mustache.render(template, data);
+            $("ul").append(taskbar)
         }
+        // var key = document.getElementById('cardnews').getAttribute('value');
+        // console.log('get key', key);
     }
 
     var clear_task_list = function () {
@@ -83,6 +97,25 @@ $(document).ready(function () {
             request_date: "2018-03-25"
         };
         */
-})
+    $(document).on('click', "#finished", function () {
+        var deletecard = $(this).closest("li");
+        var deletingKey = deletecard.find("p").html();
+        var temp_ref = ref.child(deletingKey).update({flag_done: 1});
+        deletecard.remove();
+
+        // TODO : Delete corresponding task left thing on local list.
+    });
+
+    $(document).on('click', "#finished", function () {
+        var deletecard = $(this).closest("li");
+        var deletingKey = deletecard.find("p").html();
+        var temp_ref = ref.child(deletingKey).update({flag_done: -1});
+        deletecard.remove();
+
+        // TODO : Delete corresponding task left thing on local list.
+    });
+
+
+});
 
 

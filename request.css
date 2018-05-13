@@ -5,12 +5,16 @@
 }
 
 .ui.menu{
-	margin-top: 0.5rem !important;
+	margin-top: 0 !important;
 	margin-bottom: 0px !important;
 }
 
-.ui.menu.two.item .item {
-    width: 50% !important;
+.ui.secondary.pointing.menu .item{
+	width: 50% !important;
+}
+
+.ui.top.inverted.secondary.pointing.menu .item{
+	width: auto !important;
 }
 
 .ui.stackable.menu{
@@ -18,10 +22,29 @@
 }
 
 #map {
-	height: 40%;
+	height: 250px;
 	width: 100%;
 }
 
 .ui.active.centered.inline.text.loader {
 	margin-top: 100px !important;
+}
+
+#MovingArea {
+	margin-top: 5px;
+}
+
+ui.fluid.card {
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+.invisible {
+    display:none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
 }
