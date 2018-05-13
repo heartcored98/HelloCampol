@@ -1,72 +1,101 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width" initial-scale=1.0>
+    <meta name="viewport" content="width=device-width" initial-scale=1.0>
 
-		<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <title>Task Left</title>
-		
+
     <link rel="stylesheet" type="text/css" href="Semantic/semantic.css">
-		<script
-			src="https://code.jquery.com/jquery-3.1.1.min.js"
-			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-			crossorigin="anonymous"></script>
-		<script src="Semantic/semantic.js"></script>
-		
-		<link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
-    <link href="./request.css" rel="stylesheet" />
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="Semantic/semantic.js"></script>
+
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"/>
+    <link href="./request.css" rel="stylesheet"/>
 
     <!--link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />-->
 
-		
-  </head>
-  <body>	
-		<div class="ui top fixed inverted segment" id="header">
-			<div class="ui top inverted secondary pointing menu">
-				<a class="active item">
-					해야 할 일
-				</a>
-				<a class="item" id="redir_notice">
-					공지하기
-				</a>
-				<div class="right menu">
-					<a class="item" id="gohome">
-						<i class="fas fa-home"></i>
-					</a>
-				</div>
-			</div>
-		</div>
 
-		<div id="map"></div>
-    <script>
-      function initMap() {
-				var kaist = {lat: 36.369384, lng: 127.362978};
-				var map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 15,
-					center: kaist
-				});
-				var marker = new google.maps.Marker({
-					position: kaist,
-					map: map
-				});
-      }
-    </script>
-		
-		<div class="ui two item stackable tabs menu">
-			<a class="active item" data-tab="request">해야 할 일</a>
-			<a class="item" data-tab="complete">완료된 일</a> 
+</head>
+<body>
+<div class="ui top fixed inverted segment" id="header">
+    <div class="ui top inverted secondary pointing menu">
+        <a class="active item">
+            해야 할 일
+        </a>
+        <a class="item" id="redir_notice">
+            공지하기
+        </a>
+        <div class="right menu">
+            <a class="item" id="gohome">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
     </div>
-		
-		
-		<script async defer
-    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfT-5QGLpLVyDVdZFoS3o3sDfRO_Mj-oY&callback=initMap">
-    </script>
-		
-		<script src="jquery/js/jquery-3.3.1.min.js"></script>
+</div>
+
+<div id="map"></div>
+<script>
+    function initMap() {
+        var kaist = {lat: 36.369384, lng: 127.362978};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: kaist
+        });
+        var marker = new google.maps.Marker({
+            position: kaist,
+            map: map
+        });
+    }
+</script>
+
+<div class="ui two item stackable tabs menu">
+    <a class="active item" data-tab="request">해야 할 일</a>
+    <a class="item" data-tab="complete">완료된 일</a>
+</div>
 
 
-    <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="./request.js"></script>
-  </body>
+<!------------------------------Task Left Template------------------------------>
+<script id="task-left-template" type="text/template">
+    <div class="ui fluid card">
+        <div class="content">
+            <div class="header"><a class="item">
+                <div class={{label}}>{{category}}</div>
+                {{title}}</a></div>
+            <div class="description">
+                {{content}}
+            </div>
+            <div class="ui horizontal segments">
+                <div class="ui segment">location</div>
+                <div class="ui segment">{{location}}</div>
+            </div>
+            <div class="ui two buttons">
+                <div class="ui grey button">reject request</div>
+                <div class="ui green button">I finished it</div>
+            </div>
+        </div>
+        <div class="extra content">
+            <span class="right floated">close<i class="angle up icon"></i></span>
+            <span><i class="clock outline icon"></i>{{request_date}}</span>
+        </div>
+    </div>
+</script>
+
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfT-5QGLpLVyDVdZFoS3o3sDfRO_Mj-oY&callback=initMap">
+</script>
+
+<script src="jquery/js/jquery-3.3.1.min.js"></script>
+
+
+<script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="https://cdn.rawgit.com/janl/mustache.js/master/mustache.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script src="./request.js"></script>
+</body>
 </html>
