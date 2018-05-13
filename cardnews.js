@@ -27,5 +27,17 @@ $(document).ready(function () {
         window.location.href='cardnews_4.html';
     })
 
+    var upload = function(){
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                console.log(response.authResponse.accessToken);
+            }
+        });
+    }
+
+    $("#snsupload").onclick = upload
+
+
+
 
 })

@@ -66,9 +66,30 @@
 		<div id="snsupload"><img src="./cardnews/selection/sns.jpg" width="30%"/></div>
 
 
-		
+		<script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '2128881560485460',
+                    cookie     : true,
+                    xfbml      : true,
+                    version    : 'v3.0'
+                });
+
+                FB.AppEvents.logPageView();
+
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+		</script>
 		<script src="jquery/js/jquery-3.3.1.min.js"></script>
 		<script src="jquery/js/swiper.min.js"></script>
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
     <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script src="./request.js"></script>
   <script src="cardnews.js"></script>
