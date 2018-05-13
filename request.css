@@ -21,3 +21,7 @@
 	height: 40%;
 	width: 100%;
 }
+
+.ui.active.centered.inline.text.loader {
+	margin-top: 100px !important;
+}

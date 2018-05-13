@@ -32,7 +32,10 @@ $(document).ready(function () {
     var task_left = [];
     var task_done = [];
 
+
+    // ======= Manipulate List Data ======= //
     var update_task = function () {
+
         ref.once("value", function (snapshot) {
             snapshot.forEach(function (child) {
                 var child_value = child.val();
@@ -46,10 +49,10 @@ $(document).ready(function () {
                 }
             });
             redraw_task_left();
-
         });
     };
 
+    // ======= Card Drawing Part ======= //
     var redraw_task_left = function () {
         var template = $("#task-left-template").html();
 
@@ -58,6 +61,10 @@ $(document).ready(function () {
             var taskbar = Mustache.render(template, task_left[i].payload);
             $("body").append(taskbar)
         }
+    }
+
+    var clear_task_list = function () {
+
     }
 
     console.log("test")
