@@ -23,8 +23,11 @@
 <body>
 <div class="ui top fixed inverted segment" id="header">
     <div class="ui top inverted secondary pointing menu">
-        <a class="active item">
-            업무 관리
+        <a class="active item" id="redir_request">
+					  해야 할 일
+				</a>
+			  <a class="item" id="redir_compl">
+            완료된 일
         </a>
         <a class="item" id="redir_notice">
             공지하기
@@ -37,10 +40,12 @@
     </div>
 </div>
 
+<!--
 <div class="ui secondary pointing menu">
     <a class="active item" data-tab="request">해야 할 일</a>
     <a class="item" data-tab="complete" href="completed.html">완료된 일</a>
 </div>
+-->
 	
 <div id="map"></div>
 <script>
