@@ -34,6 +34,10 @@
 	margin-top: 5px;
 }
 
+#variable_content {
+    display : none;
+}
+
 ui.fluid.card {
 	margin-top: 0px !important;
 	margin-bottom: 0px !important;
