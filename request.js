@@ -111,13 +111,12 @@ $(document).ready(function () {
     }
 
 
-
     var address = "36°22\'23.N 127°21\'E, 37-7 Geumgu-ri, Eoeun-dong, Daejeon";
     geocoder = new google.maps.Geocoder();
     geocoder.geocode({
         'address': address
-    }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK){
+    }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
             if (status != google.maps.GeocoderStatus.ZERO_RESULT) {
                 map.setCenter()
             }
@@ -131,30 +130,31 @@ $(document).ready(function () {
     $(document).on('click', "#finished", function () {
         var deletecard = $(this).closest("li");
         var deletingKey = deletecard.find("p").html();
+        var delete_index = deletecard.index();
+
+        // === Update DB === //
+        task_left.splice(delete_index, 1);
+        marker_list[delete_index].setMap(null);
+        marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: 1});
         deletecard.remove();
 
-        // TODO : Delete corresponding task left thing on local list.
+        // redraw_marker_left()
     });
 
     $(document).on('click', "#trashed", function () {
         var deletecard = $(this).closest("li");
         var deletingKey = deletecard.find("p").html();
         var delete_index = deletecard.index();
-        console.log(delete_index);
-
 
         // === Update DB === //
         task_left.splice(delete_index, 1);
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
-        console.log('delete element', marker_list);
         ref.child(deletingKey).update({flag_done: -1});
         deletecard.remove();
 
         // redraw_marker_left()
-
-        // TODO : Delete corresponding task left thing on local list.
     });
 
     $(document).on('click', "#lowerbar", function () {
@@ -164,10 +164,10 @@ $(document).ready(function () {
 
         if (variable_content.css("display") === "none") {
             variable_content.show();
-            expand_message.html("Hide"+"<i class='angle up icon'></i>")
+            expand_message.html("Hide" + "<i class='angle up icon'></i>")
         } else {
             variable_content.hide();
-            expand_message.html("Show more"+"<i class='angle down icon'></i>")
+            expand_message.html("Show more" + "<i class='angle down icon'></i>")
         }
     })
 
