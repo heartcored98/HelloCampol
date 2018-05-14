@@ -161,26 +161,22 @@ $(document).ready(function () {
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
+        var delete_index = changing_card.index();
 
         if (variable_content.css("display") === "none") {
             variable_content.show();
             expand_message.html("Hide" + "<i class='angle up icon'></i>")
+
+            marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
         } else {
             variable_content.hide();
-            expand_message.html("Show more" + "<i class='angle down icon'></i>")
+            expand_message.html("Show more" + "<i class='angle down icon'></i>");
+            marker_list[delete_index].setAnimation(null);
+
         }
     })
 
-    /*
-        var data = {
-            label: '"ui red horizontal label"',
-            category: "Repair",
-            title: "There is a cat on the tree! It needs help!",
-            content: "Something is here",
-            location: "N13-1 shinhakguan",
-            request_date: "2018-03-25"
-        };
-        */
+
 });
 
 
