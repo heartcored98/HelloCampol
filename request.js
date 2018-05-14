@@ -32,7 +32,7 @@ $(document).ready(function () {
     var task_left = [];
     var task_done = [];
     var task_trash = [];
-    $(".ui.active.centered.inline.text.loader").css("display", "none"); //BS. edited on 5/14 8am
+    $(".ui.active.centered.inline.text.loader").css("display", "none");
 
 
     // ======= Manipulate List Data ======= //
@@ -81,15 +81,41 @@ $(document).ready(function () {
         // console.log('get key', key);
     }
 
-    var clear_task_list = function () {
-
-    }
-
-    console.log("test")
 
     update_task();
-    console.log(task_left);
 
+
+    $(document).on('click', "#finished", function () {
+        var deletecard = $(this).closest("li");
+        var deletingKey = deletecard.find("p").html();
+        ref.child(deletingKey).update({flag_done: 1});
+        deletecard.remove();
+
+        // TODO : Delete corresponding task left thing on local list.
+    });
+
+    $(document).on('click', "#trashed", function () {
+        var deletecard = $(this).closest("li");
+        var deletingKey = deletecard.find("p").html();
+        ref.child(deletingKey).update({flag_done: -1});
+        deletecard.remove();
+
+        // TODO : Delete corresponding task left thing on local list.
+    });
+
+    $(document).on('click', "#lowerbar", function () {
+        var changing_card = $(this).closest("li");
+        var variable_content = changing_card.find("#variable_content");
+        var expand_message = changing_card.find("#expand_message");
+
+        if (variable_content.css("display") === "none") {
+            variable_content.show();
+            expand_message.html("Hide"+"<i class='angle up icon'></i>")
+        } else {
+            variable_content.hide();
+            expand_message.html("Show more"+"<i class='angle down icon'></i>")
+        }
+    })
 
     /*
         var data = {
@@ -101,25 +127,6 @@ $(document).ready(function () {
             request_date: "2018-03-25"
         };
         */
-    $(document).on('click', "#finished", function () {
-        var deletecard = $(this).closest("li");
-        var deletingKey = deletecard.find("p").html();
-        var temp_ref = ref.child(deletingKey).update({flag_done: 1});
-        deletecard.remove();
-
-        // TODO : Delete corresponding task left thing on local list.
-    });
-
-    $(document).on('click', "#trashed", function () {
-        var deletecard = $(this).closest("li");
-        var deletingKey = deletecard.find("p").html();
-        var temp_ref = ref.child(deletingKey).update({flag_done: -1});
-        deletecard.remove();
-
-        // TODO : Delete corresponding task left thing on local list.
-    });
-
-
 });
 
 
