@@ -168,7 +168,7 @@ $(document).ready(function () {
         var delete_index = changing_card.index();
 
         if (variable_content.css("display") === "none") {
-            variable_content.show();
+			 variable_content.show();
             expand_message.html("Hide" + "<i class='angle up icon'></i>")
 
             marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
