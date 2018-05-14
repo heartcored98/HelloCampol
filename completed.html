@@ -1,65 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width" initial-scale=1.0>
+    <meta name="viewport" content="width=device-width" initial-scale=1.0>
 
-    <title>Task Done</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <title>Task Left</title>
 
-		<link rel="stylesheet" type="text/css" href="Semantic/semantic.css">
-		<script
-			src="https://code.jquery.com/jquery-3.1.1.min.js"
-			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-			crossorigin="anonymous"></script>
-		<script src="Semantic/semantic.js"></script>
+    <link rel="stylesheet" type="text/css" href="Semantic/semantic.css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="Semantic/semantic.js"></script>
 
-    <!--link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />-->
-
-
-  </head>
-  <body>
-
-		<div class="ui fixed inverted menu">
-			<div class="ui container">
-				<a href="#" class="header item">
-					<img class="logo" src="assets/images/logo.png">
-					Project Name aaa
-				</a>
-				<a href="#" class="item">Home</a>
-				<div class="ui simple dropdown item">
-					Dropdown <i class="dropdown icon"></i>
-					<div class="menu">
-						<a class="item" href="#">Link Item</a>
-						<a class="item" href="#">Link Item</a>
-						<div class="divider"></div>
-						<div class="header">Header Item</div>
-						<div class="item">
-							<i class="dropdown icon"></i>
-							Sub Menu
-							<div class="menu">
-								<a class="item" href="#">Link Item</a>
-								<a class="item" href="#">Link Item</a>
-							</div>
-						</div>
-						<a class="item" href="#">Link Item</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<h1>Request page!</h1>
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"/>
+    <link href="./request.css" rel="stylesheet"/>
 
 
+</head>
+<body>
+<div class="ui top fixed inverted segment" id="header">
+    <div class="ui top inverted secondary pointing menu">
+        <a class="active item">
+            업무 관리
+        </a>
+        <a class="item" id="redir_notice">
+            공지하기
+        </a>
+        <div class="right menu">
+            <a class="item" id="gohome">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="ui secondary pointing menu">
+    <a class="item" data-tab="request" href="request.html">해야 할 일</a>
+    <a class="active item" data-tab="complete">완료된 일</a>
+</div>
 
 
+<div class="ui active centered inline text loader">Loading</div>
+
+<ul id="ulcontent">
+</ul>
 
 
+<!------------------------------Task Done Template------------------------------>
+
+<script id="task-done-template" type="text/template">
+    <li>
+        <p class="invisible">{{keyvalue}}</p>
+        <div id="cardnews" class="ui fluid card">
+            <div class="content">
+                <div class="header"><a class="item">
+                    <div class="ui green horizontal label">{{category}}</div>
+                    <div class="ui green horizontal basic label">Satisfied</div>
+
+                    {{title}}</a>
+                </div>
+
+                <div>
+                    <span><i class="comment icon"></i>{{comment}}</span>
+                </div>
+            </div>
+
+            <div class="content" id="variable_content">
+                <!--<div id="variable_content">-->
+                <div class="description">
+                    [Origianl Request] {{content}}
+                </div>
+                <div class="ui horizontal segments">
+                    <div class="ui segment">location</div>
+                    <div class="ui segment">{{location}}</div>
+                </div>
+                <div class="ui two buttons">
+                    <div class="ui grey button" id="trashed">Delete</div>
+                    <div class="ui red button" id="undo_finished">Undo Finished</div>
+                </div>
+                <!--</div>-->
+            </div>
+
+            <div class="extra content" id="lowerbar">
+                <span class="right floated" id="expand_message">Show more<i class="angle down icon"></i></span>
+                <span><i class="check circle outline icon"></i>Finished {{done_date}}</span>
+            </div>
+        </div>
+    </li>
+</script>
 
 
-		<!--
-		<script src="jquery/js/jquery-1.9.0.min.js"></script>
-    <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
-    <script src="./capital_game.js"></script> -->
-  </body>
+<!----------------------------------------------------------------------------->
+
+
+<script src="jquery/js/jquery-3.3.1.min.js"></script>
+<script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="https://cdn.rawgit.com/janl/mustache.js/master/mustache.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script src="./completed.js"></script>
+
+</body>
 </html>

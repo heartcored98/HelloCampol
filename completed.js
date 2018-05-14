@@ -29,10 +29,8 @@ $(document).ready(function () {
 
     // ======= initialize variables ======= //
     ref = database.ref("TaskList");
-    var task_left = [];
     var task_done = [];
     var task_trash = [];
-    var marker_list = [];
     $(".ui.active.centered.inline.text.loader").css("display", "none");
 
 
@@ -50,32 +48,25 @@ $(document).ready(function () {
                 if (child_value.flag_done == 1) {
                     task_done.push(task);
                 }
-                else if (child_value.flag_done == 0) {
-                    task_left.push(task);
-                }
-                else {
-                    task_trash.push(task);
-                }
             });
-            redraw_task_left();
-            redraw_marker_left();
+            redraw_task_done();
         });
     };
 
     // ======= Card Drawing Part ======= //
-    var redraw_task_left = function () {
+    var redraw_task_done = function () {
         $(".ui.active.centered.inline.text.loader").css("display", "none");
 
-        if (task_left.length == 0) {
-            document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
+        if (task_done.length == 0) {
+            document.getElementById('ulcontent').innerHTML = "당장은 할일을 해야겠네요!\n You should have to work now!";
         }
         else {
-            var template = $("#task-left-template").html();
+            var template = $("#task-done-template").html();
 
-            for (var i = 0; i < task_left.length; i++) {
+            for (var i = 0; i < task_done.length; i++) {
                 // === Drawing Task Bar === //
-                var data = task_left[i].payload;
-                data["keyvalue"] = task_left[i].key;
+                var data = task_done[i].payload;
+                data["keyvalue"] = task_done[i].key;
                 var taskbar = Mustache.render(template, data);
                 $("ul").append(taskbar);
             }
@@ -84,54 +75,14 @@ $(document).ready(function () {
         // console.log('get key', key);
     }
 
-    var redraw_marker_left = function () {
-        if (task_left.length > 0) {
-            console.log("clearing marker")
-            var bounds = new google.maps.LatLngBounds();
-            for (var i = 0; i < marker_list.length; i++) {
-                marker_list[i].setMap(null);
-            }
-            marker_list = [];
-            console.log("clear markerlist", marker_list);
-
-            for (var i = 0; i < task_left.length; i++) {
-                var data = task_left[i].payload;
-                var coordinate = data.coordinate;
-                var marker_pos = {lat: coordinate[0], lng: coordinate[1]};
-                var marker = new google.maps.Marker({
-                    position: marker_pos,
-                    map: map
-                });
-                marker_list.push(marker);
-                bounds.extend(marker.position)
-            }
-            map.fitBounds(bounds);
-            if (map.getZoom() > 16) map.setZoom(15);
-        }
-    }
-
-
-
-    var address = "36°22\'23.N 127°21\'E, 37-7 Geumgu-ri, Eoeun-dong, Daejeon";
-    geocoder = new google.maps.Geocoder();
-    geocoder.geocode({
-        'address': address
-    }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK){
-            if (status != google.maps.GeocoderStatus.ZERO_RESULT) {
-                map.setCenter()
-            }
-        }
-    })
-
 
     update_task();
 
 
-    $(document).on('click', "#finished", function () {
+    $(document).on('click', "#undo_finished", function () {
         var deletecard = $(this).closest("li");
         var deletingKey = deletecard.find("p").html();
-        ref.child(deletingKey).update({flag_done: 1});
+        ref.child(deletingKey).update({flag_done: 0});
         deletecard.remove();
 
         // TODO : Delete corresponding task left thing on local list.
@@ -145,14 +96,10 @@ $(document).ready(function () {
 
 
         // === Update DB === //
-        task_left.splice(delete_index, 1);
-        marker_list[delete_index].setMap(null);
-        marker_list.splice(delete_index, 1);
-        console.log('delete element', marker_list);
+        task_done.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: -1});
         deletecard.remove();
 
-        // redraw_marker_left()
 
         // TODO : Delete corresponding task left thing on local list.
     });
@@ -164,10 +111,10 @@ $(document).ready(function () {
 
         if (variable_content.css("display") === "none") {
             variable_content.show();
-            expand_message.html("Hide"+"<i class='angle up icon'></i>")
+            expand_message.html("Hide" + "<i class='angle up icon'></i>")
         } else {
             variable_content.hide();
-            expand_message.html("Show more"+"<i class='angle down icon'></i>")
+            expand_message.html("Show more" + "<i class='angle down icon'></i>")
         }
     })
 
