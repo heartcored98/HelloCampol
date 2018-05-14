@@ -33,6 +33,10 @@ $(document).ready(function () {
         window.location.href = 'request.html';
     });
 
+    $('#redir_compl').click(function () {
+        window.location.href = 'completed.html';
+    });	
+	
     $('#redir_notice').click(function () {
         window.location.href = 'cardnews.html';
     });
