@@ -48,13 +48,95 @@
 
 <!------------------------------Task Done Template------------------------------>
 
-<script id="task-done-template" type="text/template">
+<script id="task-done-template-danger" type="text/template">
     <li>
         <p class="invisible">{{keyvalue}}</p>
         <div id="cardnews" class="ui fluid card">
             <div class="content">
                 <div class="header"><a class="item">
-                    <div class="ui green horizontal label">{{category}}</div>
+                    <div class="ui red horizontal label">{{category}}</div>
+                    <div class="ui green horizontal basic label">Satisfied</div>
+
+                    {{title}}</a>
+                </div>
+
+                <div>
+                    <span><i class="comment icon"></i>{{comment}}</span>
+                </div>
+            </div>
+
+            <div class="content" id="variable_content">
+                <!--<div id="variable_content">-->
+                <div class="description">
+                    [Origianl Request] {{content}}
+                </div>
+                <div class="ui horizontal segments">
+                    <div class="ui segment">location</div>
+                    <div class="ui segment">{{location}}</div>
+                </div>
+                <div class="ui two buttons">
+                    <div class="ui grey button" id="trashed">Delete</div>
+                    <div class="ui red button" id="undo_finished">Undo Finished</div>
+                </div>
+                <!--</div>-->
+            </div>
+
+            <div class="extra content" id="lowerbar">
+                <span class="right floated" id="expand_message">Show more<i class="angle down icon"></i></span>
+                <span><i class="check circle outline icon"></i>Finished {{done_date}}</span>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script id="task-done-template-repair" type="text/template">
+    <li>
+        <p class="invisible">{{keyvalue}}</p>
+        <div id="cardnews" class="ui fluid card">
+            <div class="content">
+                <div class="header"><a class="item">
+                    <div class="ui blue horizontal label">{{category}}</div>
+                    <div class="ui green horizontal basic label">Satisfied</div>
+
+                    {{title}}</a>
+                </div>
+
+                <div>
+                    <span><i class="comment icon"></i>{{comment}}</span>
+                </div>
+            </div>
+
+            <div class="content" id="variable_content">
+                <!--<div id="variable_content">-->
+                <div class="description">
+                    [Origianl Request] {{content}}
+                </div>
+                <div class="ui horizontal segments">
+                    <div class="ui segment">location</div>
+                    <div class="ui segment">{{location}}</div>
+                </div>
+                <div class="ui two buttons">
+                    <div class="ui grey button" id="trashed">Delete</div>
+                    <div class="ui red button" id="undo_finished">Undo Finished</div>
+                </div>
+                <!--</div>-->
+            </div>
+
+            <div class="extra content" id="lowerbar">
+                <span class="right floated" id="expand_message">Show more<i class="angle down icon"></i></span>
+                <span><i class="check circle outline icon"></i>Finished {{done_date}}</span>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script id="task-done-template-living" type="text/template">
+    <li>
+        <p class="invisible">{{keyvalue}}</p>
+        <div id="cardnews" class="ui fluid card">
+            <div class="content">
+                <div class="header"><a class="item">
+                    <div class="ui yellow horizontal label">{{category}}</div>
                     <div class="ui green horizontal basic label">Satisfied</div>
 
                     {{title}}</a>
