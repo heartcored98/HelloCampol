@@ -16,6 +16,7 @@
 
     <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"/>
     <link href="./request.css" rel="stylesheet"/>
+    <script src="../PR3/capital_game.js"></script>
 
     <!--link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />-->
 
@@ -41,17 +42,14 @@
 <div id="map" class="ui segment"></div>
 <script>
     function initMap() {
-        var kaist = {lat: 36.369384, lng: 127.362978};
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var kaist = {lat: 36.369684, lng: 127.362378};
+        window.map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: kaist
         });
-        var marker = new google.maps.Marker({
-            position: kaist,
-            map: map
-        });
     }
 </script>
+
 
 <div class="ui secondary pointing menu">
     <a class="active item" data-tab="request">해야 할 일</a>
@@ -97,9 +95,7 @@
 </script>
 
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfT-5QGLpLVyDVdZFoS3o3sDfRO_Mj-oY&callback=initMap">
-</script>
+
 
 <script src="jquery/js/jquery-3.3.1.min.js"></script>
 
@@ -107,6 +103,10 @@
 <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
 <script src="https://cdn.rawgit.com/janl/mustache.js/master/mustache.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfT-5QGLpLVyDVdZFoS3o3sDfRO_Mj-oY&callback=initMap">
+</script>
 <script src="./request.js"></script>
+
 </body>
 </html>
