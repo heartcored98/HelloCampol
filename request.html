@@ -16,9 +16,7 @@
 
     <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"/>
     <link href="./request.css" rel="stylesheet"/>
-    <script src="../PR3/capital_game.js"></script>
 
-    <!--link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />-->
 
 
 </head>
@@ -41,7 +39,7 @@
 
 <div class="ui secondary pointing menu">
     <a class="active item" data-tab="request">해야 할 일</a>
-    <a class="item" data-tab="complete">완료된 일</a>
+    <a class="item" data-tab="complete" href="completed.html">완료된 일</a>
 </div>
 	
 <div id="map" class="ui segment"></div>
@@ -81,8 +79,8 @@
                         <div class="ui segment">{{location}}</div>
                     </div>
                     <div class="ui two buttons">
-                        <div class="ui grey button" id="trashed">reject request</div>
-                        <div class="ui green button" id="finished">I finished it</div>
+                        <div class="ui grey button" id="trashed">Delete</div>
+                        <div class="ui green button" id="finished">Mark as Finished</div>
                     </div>
                 </div>
             </div>
