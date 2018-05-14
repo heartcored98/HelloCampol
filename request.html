@@ -67,13 +67,73 @@
 
 
 <!------------------------------Task Left Template------------------------------>
-<script id="task-left-template" type="text/template">
+<script id="task-left-template-danger" type="text/template">
     <li>
         <p class="invisible">{{keyvalue}}</p>
         <div id="cardnews" class="ui fluid card">
             <div class="content">
-                <div class="header"><a class="item">
+                <div class="header"><a class="item" id="lowerbar">
                     <div class="ui red horizontal label">{{category}}</div>
+                    {{title}}</a></div>
+                <div id="variable_content">
+                    <div class="description">
+                        {{content}}
+                    </div>
+                    <div class="ui horizontal segments">
+                        <div class="ui segment">location</div>
+                        <div class="ui segment">{{location}}</div>
+                    </div>
+                    <div class="ui two buttons">
+                        <div class="ui grey button" id="trashed">Delete</div>
+                        <div class="ui green button" id="finished">Mark as Finished</div>
+                    </div>
+                </div>
+            </div>
+            <div class="extra content" id="lowerbar">
+                <span class="right floated" id="expand_message">Show more<i class="angle down icon"></i></span>
+                <span><i class="clock outline icon"></i>{{request_date}}</span>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script id="task-left-template-repair" type="text/template">
+    <li>
+        <p class="invisible">{{keyvalue}}</p>
+        <div id="cardnews" class="ui fluid card">
+            <div class="content">
+                <div class="header"><a class="item" id="lowerbar">
+                    <div class="ui blue horizontal label">{{category}}</div>
+                    {{title}}</a></div>
+                <div id="variable_content">
+                    <div class="description">
+                        {{content}}
+                    </div>
+                    <div class="ui horizontal segments">
+                        <div class="ui segment">location</div>
+                        <div class="ui segment">{{location}}</div>
+                    </div>
+                    <div class="ui two buttons">
+                        <div class="ui grey button" id="trashed">Delete</div>
+                        <div class="ui green button" id="finished">Mark as Finished</div>
+                    </div>
+                </div>
+            </div>
+            <div class="extra content" id="lowerbar">
+                <span class="right floated" id="expand_message">Show more<i class="angle down icon"></i></span>
+                <span><i class="clock outline icon"></i>{{request_date}}</span>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script id="task-left-template-living" type="text/template">
+    <li>
+        <p class="invisible">{{keyvalue}}</p>
+        <div id="cardnews" class="ui fluid card">
+            <div class="content">
+                <div class="header"><a class="item" id="lowerbar">
+                    <div class="ui yellow horizontal label">{{category}}</div>
                     {{title}}</a></div>
                 <div id="variable_content">
                     <div class="description">
