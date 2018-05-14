@@ -26,7 +26,7 @@
 <div class="ui top fixed inverted segment" id="header">
     <div class="ui top inverted secondary pointing menu">
         <a class="active item">
-            해야 할 일
+            업무 관리
         </a>
         <a class="item" id="redir_notice">
             공지하기
@@ -39,6 +39,11 @@
     </div>
 </div>
 
+<div class="ui secondary pointing menu">
+    <a class="active item" data-tab="request">해야 할 일</a>
+    <a class="item" data-tab="complete">완료된 일</a>
+</div>
+	
 <div id="map" class="ui segment"></div>
 <script>
     function initMap() {
@@ -50,11 +55,6 @@
     }
 </script>
 
-
-<div class="ui secondary pointing menu">
-    <a class="active item" data-tab="request">해야 할 일</a>
-    <a class="item" data-tab="complete">완료된 일</a>
-</div>
 
 
 <div class="ui active centered inline text loader">Loading</div>

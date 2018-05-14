@@ -20,20 +20,19 @@
 	  <link href="./cardnews.css" rel="stylesheet"/>
     <!--link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />-->
 
-		
+
   </head>
   <body>
-	
 		<div class="ui top fixed inverted segment" id="header">
 			<div class="ui top inverted secondary pointing menu">
 				<a class="item" id="redir_request">
-					해야 할 일
+					업무 관리
 				</a>
 				<a class="active item" id="redir_notice">
 					공지하기
 				</a>
 				<div class="right menu">
-					<a class="item">
+					<a class="item" id="gohome">
 						<i class="fas fa-home"></i>
 					</a>
 				</div>
@@ -64,13 +63,17 @@
 		</div>
 
 		<div id="snsupload"><img src="./cardnews/selection/sns.jpg" width="30%"/></div>
-
+		<div
+			class="fb-like"
+			data-share="true"
+			data-width="450"
+			data-show-faces="true">
+		</div>
 
 		
 		<script src="jquery/js/jquery-3.3.1.min.js"></script>
 		<script src="jquery/js/swiper.min.js"></script>
     <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="./request.js"></script>
   <script src="cardnews.js"></script>
   </body>
 </html>
