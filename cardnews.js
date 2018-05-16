@@ -27,6 +27,94 @@ $(document).ready(function () {
         window.location.href='cardnews_4.html';
     });
 
+    // ========== upload setting ========= //
+
+    $("#snsupload").click(function(){
+        clickfunction = function (callback){
+            $("#hide").toggleClass("none");
+            $("#uploadalarm").toggleClass("none");
+            $("#yes").toggleClass("none");
+            $("#cancel").toggleClass("none");
+            callback();
+        }
+
+        clickfunction(function(){
+            $("#hide").animate({
+                opacity: '1'
+            }, 500)
+            $("#uploadalarm").animate({
+                opacity: '1'
+            }, 500)
+            $("#yes").animate({
+                opacity: '1'
+            }, 500)
+            $("#cancel").animate({
+                opacity: '1'
+            }, 500)
+        })
+    })
+
+    $("#yes").click(function(){
+        $("#uploadalarm").animate({
+            opacity: '0'
+        }, 500, function(){
+            $("#uploadalarm").toggleClass("none")
+        });
+        $("#yes").animate({
+            opacity: '0'
+        }, 500, function(){
+            $("#yes").toggleClass("none")
+        });
+        $("#cancel").animate({
+            opacity: '0'
+        }, 500, function(){
+            $("#cancel").toggleClass("none")
+        });
+        $("#complete").toggleClass("none");
+        $("#complete").animate({
+            opacity: '1'
+        }, 500, function(){
+                setTimeout(function(){
+                    $("#hide").animate({
+                        opacity: '0'
+                    }, 500, function(){
+                        $("#hide").toggleClass("none")
+                    });
+                    $("#complete").animate({
+                        opacity: '0'
+                    }, 500, function(){
+                        $("#complete").toggleClass("none")
+                    });
+                }, 1000);
+        });
+    });
+
+
+    $("#cancel").on('click', function(){
+
+        $("#hide").animate({
+            opacity: '0'
+        }, 500, function(){
+            $("#hide").toggleClass("none")
+        });
+        $("#uploadalarm").animate({
+            opacity: '0'
+        }, 500, function(){
+            $("#uploadalarm").toggleClass("none")
+        });
+        $("#yes").animate({
+            opacity: '0'
+        }, 500, function(){
+            $("#yes").toggleClass("none")
+        });
+        $("#cancel").animate({
+            opacity: '0'
+        }, 500, function(){
+            $("#cancel").toggleClass("none")
+        });
+
+    });
+
 
     // ====== Page Redirection Setting =======//
     $('#redir_request').click(function () {
@@ -45,22 +133,4 @@ $(document).ready(function () {
         window.location.href = 'index.html';
     })
 
-		// ====== Facebook Upload Setting ====== //
-	  window.fbAsyncInit = function() {
-			FB.init({
-				appId      : '192630588032448',
-				xfbml      : true,
-				version    : 'v3.0'
-			});
-			FB.AppEvents.logPageView();
-  	};
-
-		(function(d, s, id){
-			 var js, fjs = d.getElementsByTagName(s)[0];
-			 if (d.getElementById(id)) {return;}
-			 js = d.createElement(s); js.id = id;
-			 js.src = "https://connect.facebook.net/en_US/sdk.js";
-			 fjs.parentNode.insertBefore(js, fjs);
-		 }(document, 'script', 'facebook-jssdk'));
-	
 });

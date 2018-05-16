@@ -52,7 +52,8 @@ body{
     display: block;
 }
 #snsupload{
-    margin-top:30px
+    margin-top:30px;
+    margin-bottom: 30px;
 }
 #snsupload img{
     margin: auto;
@@ -71,4 +72,53 @@ body{
 
 .drinking{
     margin-top:10px;
+}
+
+#hide{
+    position :absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    opacity: 0;
+
+}
+
+#uploadalarm{
+    position:absolute;
+    top: 35%;
+    left: 16%;
+    z-index: 2;
+    opacity: 0;
+
+}
+
+#yes{
+    position: absolute;
+    top:290px;
+    left : 200px;
+    z-index: 3;
+    opacity: 0;
+
+}
+
+#cancel{
+    position: absolute;
+    top:290px;
+    left : 250px;
+    z-index: 3;
+    opacity: 0;
+
+}
+
+.none{
+    display: none;
+}
+
+#complete{
+    position:absolute;
+    top: 35%;
+    left: 16%;
+    z-index: 2;
+    opacity: 0;
+
 }
