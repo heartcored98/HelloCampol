@@ -13,6 +13,10 @@
 	width: 50% !important;
 }
 
+.ui.top.fixed.inverted.segment {
+	margin-top:0 !important;
+}
+
 .ui.top.inverted.secondary.pointing.menu .item{
 	width: auto !important;
 }
@@ -30,8 +34,8 @@
 	margin-top: 100px !important;
 }
 
-#MovingArea {
-	margin-top: 5px;
+.description {
+	margin-top: 5px !important;
 }
 
 #variable_content {
@@ -59,4 +63,31 @@ ul {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
+	z-index: 1;
+}
+
+#TempModal {
+	display: none;
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background-color: black;
+	opacity: 0.9;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	top: 0;
+}
+
+#ModalBox {
+	overflow: hidden;
+	display: none;
+	z-index: 101;
+	margin: 0;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
