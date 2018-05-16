@@ -19,6 +19,10 @@ $(document).ready(function () {
         window.location.href = 'request.html';
     });
 
+    $('#redir_compl').click(function () {
+        window.location.href = 'completed.html';
+    });
+
     $('#redir_notice').click(function () {
         window.location.href = 'cardnews.html';
     });
@@ -61,14 +65,18 @@ $(document).ready(function () {
             document.getElementById('ulcontent').innerHTML = "당장은 할일을 해야겠네요!\n You should have to work now!";
         }
         else {
-            var template = $("#task-done-template").html();
+            var template_danger = $("#task-done-template-danger").html();
+            var template_repair = $("#task-done-template-repair").html();
+            var template_living = $("#task-done-template-living").html();
 
             for (var i = 0; i < task_done.length; i++) {
                 // === Drawing Task Bar === //
                 var data = task_done[i].payload;
+                var category = data.category;
                 data["keyvalue"] = task_done[i].key;
-                var taskbar = Mustache.render(template, data);
-                $("ul").append(taskbar);
+                if (category == 'Danger') var taskbar = Mustache.render(template_danger, data);
+                if (category == 'Repair') var taskbar = Mustache.render(template_repair, data);
+                if (category == 'Living') var taskbar = Mustache.render(template_living, data);                $("ul").append(taskbar);
             }
         }
         // var key = document.getElementById('cardnews').getAttribute('value');
@@ -104,7 +112,7 @@ $(document).ready(function () {
         // TODO : Delete corresponding task left thing on local list.
     });
 
-    $(document).on('click', "#lowerbar", function () {
+    $(document).on('click', "#expand_message", function () {
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");

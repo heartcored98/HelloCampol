@@ -47,6 +47,14 @@ ui.fluid.card {
     display:none;
 }
 
+.bold {
+	/*
+	font-weight: bold;
+	 */
+	color: #4183C4;
+	width: 20% !important;
+}
+
 ul {
     list-style-type: none;
     margin: 0px;

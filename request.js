@@ -19,6 +19,10 @@ $(document).ready(function () {
         window.location.href = 'request.html';
     });
 
+    $('#redir_compl').click(function () {
+        window.location.href = 'completed.html';
+    });
+
     $('#redir_notice').click(function () {
         window.location.href = 'cardnews.html';
     });
@@ -42,6 +46,9 @@ $(document).ready(function () {
         $(".ui.active.centered.inline.text.loader").css("display", "block");
 
         ref.once("value", function (snapshot) {
+            if (snapshot.length == 0) {
+                document.getElementById('ulcontent').innerHTML = "지금 당장 해야되는 일이 없군요! \n No works to do now!";
+            }
             snapshot.forEach(function (child) {
                 var child_value = child.val();
                 var key = child.key;
@@ -70,37 +77,50 @@ $(document).ready(function () {
             document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
         }
         else {
-            var template = $("#task-left-template").html();
-
+            var template_danger = $("#task-left-template-danger").html();
+            var template_repair = $("#task-left-template-repair").html();
+            var template_living = $("#task-left-template-living").html();
             for (var i = 0; i < task_left.length; i++) {
                 // === Drawing Task Bar === //
                 var data = task_left[i].payload;
+                var category = data.category;
                 data["keyvalue"] = task_left[i].key;
-                var taskbar = Mustache.render(template, data);
+                if (category == 'Danger') var taskbar = Mustache.render(template_danger, data);
+                if (category == 'Repair') var taskbar = Mustache.render(template_repair, data);
+                if (category == 'Living') var taskbar = Mustache.render(template_living, data);
                 $("ul").append(taskbar);
             }
         }
         // var key = document.getElementById('cardnews').getAttribute('value');
         // console.log('get key', key);
-    }
+    };
 
     var redraw_marker_left = function () {
         if (task_left.length > 0) {
-            console.log("clearing marker")
             var bounds = new google.maps.LatLngBounds();
             for (var i = 0; i < marker_list.length; i++) {
                 marker_list[i].setMap(null);
             }
             marker_list = [];
-            console.log("clear markerlist", marker_list);
 
             for (var i = 0; i < task_left.length; i++) {
                 var data = task_left[i].payload;
+
+                // === Choosing IconColor === //
+                var category = data.category;
+                //console.log(category);
+                if (category == 'Danger') var iconColor = "assets/marker-pin-google-red.png";
+                if (category == 'Repair') var iconColor = "assets/marker-pin-google-blue.png";
+                if (category == 'Living') var iconColor = "assets/marker-pin-google-yellow.png";
+                //console.log(iconColor);
+
+                // === Choosing Coordinate and make marker with given png === //
                 var coordinate = data.coordinate;
                 var marker_pos = {lat: coordinate[0], lng: coordinate[1]};
                 var marker = new google.maps.Marker({
                     position: marker_pos,
-                    map: map
+                    map: map,
+                    icon: iconColor
                 });
                 marker_list.push(marker);
                 bounds.extend(marker.position)
@@ -108,21 +128,7 @@ $(document).ready(function () {
             map.fitBounds(bounds);
             if (map.getZoom() > 16) map.setZoom(15);
         }
-    }
-
-
-
-    var address = "36°22\'23.N 127°21\'E, 37-7 Geumgu-ri, Eoeun-dong, Daejeon";
-    geocoder = new google.maps.Geocoder();
-    geocoder.geocode({
-        'address': address
-    }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK){
-            if (status != google.maps.GeocoderStatus.ZERO_RESULT) {
-                map.setCenter()
-            }
-        }
-    })
+    };
 
 
     update_task();
@@ -131,56 +137,49 @@ $(document).ready(function () {
     $(document).on('click', "#finished", function () {
         var deletecard = $(this).closest("li");
         var deletingKey = deletecard.find("p").html();
+        var delete_index = deletecard.index();
+
+        // === Update DB === //
+        task_left.splice(delete_index, 1);
+        marker_list[delete_index].setMap(null);
+        marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: 1});
         deletecard.remove();
-
-        // TODO : Delete corresponding task left thing on local list.
     });
 
     $(document).on('click', "#trashed", function () {
         var deletecard = $(this).closest("li");
         var deletingKey = deletecard.find("p").html();
         var delete_index = deletecard.index();
-        console.log(delete_index);
-
 
         // === Update DB === //
         task_left.splice(delete_index, 1);
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
-        console.log('delete element', marker_list);
         ref.child(deletingKey).update({flag_done: -1});
         deletecard.remove();
-
-        // redraw_marker_left()
-
-        // TODO : Delete corresponding task left thing on local list.
     });
 
-    $(document).on('click', "#lowerbar", function () {
+    $(document).on('click', "#expand_message", function () {
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
+        var delete_index = changing_card.index();
 
         if (variable_content.css("display") === "none") {
-            variable_content.show();
-            expand_message.html("Hide"+"<i class='angle up icon'></i>")
+			 variable_content.show();
+            expand_message.html("Hide" + "<i class='angle up icon'></i>")
+
+            marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
         } else {
             variable_content.hide();
-            expand_message.html("Show more"+"<i class='angle down icon'></i>")
+            expand_message.html("Show more" + "<i class='angle down icon'></i>");
+            marker_list[delete_index].setAnimation(null);
+
         }
     })
 
-    /*
-        var data = {
-            label: '"ui red horizontal label"',
-            category: "Repair",
-            title: "There is a cat on the tree! It needs help!",
-            content: "Something is here",
-            location: "N13-1 shinhakguan",
-            request_date: "2018-03-25"
-        };
-        */
+
 });
 
 

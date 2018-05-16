@@ -45,9 +45,14 @@ body, html {
 }
 
 .bg {
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 1;
+
 	/* The image used */
 	background-image: url("assets/BackgroundImg-min.jpg");
-
 	/* Full height */
 	height: 100%;
 
@@ -55,17 +60,55 @@ body, html {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-blend-mode: darken;
+	/*filter: blur(5px);*/
+}
+
+.upbg {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	background-color: black;
+	opacity: 0.7;
+	width: 100%;
+	height: 100%;
 }
 
 #MainPageLogo {
 	margin: 0% 5% 0% 5%;
-	padding-top: 60%;
+	padding-top: 50%;
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 9999;
 }
 #MainPageComment {
 	margin-top: 0;
 	margin-bottom:30px;
 	color: white;
 }
-#LogoSpacer {
-	height: 60%;
+
+.ui.inverted.button {
+	width: 80% !important;
 }
+
+/*
+#to/do {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+}
+
+#compl {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+}
+
+#notice {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+}
+*/
