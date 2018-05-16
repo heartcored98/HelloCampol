@@ -58,8 +58,21 @@
     }
 </script>
 
-
-
+<div id="modaldiv" class="ui small modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Smalls Like Bakin
+    </div>
+    <div class="content">
+        <p>Thank you for your order</p>
+    </div>
+    <div class="actions">
+        <div class="ui positive right labeled icon button">
+            <a class="text-white" href="<?php echo site_url('home/order');?>">Back to Home</a>
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
 <div class="ui active centered inline text loader">Loading</div>
 
 <ul id="ulcontent">
@@ -80,11 +93,13 @@
                         {{content}}
                     </div>
                     <div class="ui horizontal segments">
-                        <div class="ui segment">location</div>
+                        <div class="ui segment"><a class="bold">location</a>    |    {{location}}</div>
+                        <!--
                         <div class="ui segment">{{location}}</div>
+                        -->
                     </div>
                     <div class="ui two buttons">
-                        <div class="ui grey button" id="trashed">Delete</div>
+                        <div class="ui grey button" id="trashed">Refuse Request</div>
                         <div class="ui green button" id="finished">Mark as Finished</div>
                     </div>
                 </div>
@@ -110,11 +125,13 @@
                         {{content}}
                     </div>
                     <div class="ui horizontal segments">
-                        <div class="ui segment">location</div>
+                        <div class="ui segment"><a class="bold">location</a>    |    {{location}}</div>
+                        <!--
                         <div class="ui segment">{{location}}</div>
+                        -->
                     </div>
                     <div class="ui two buttons">
-                        <div class="ui grey button" id="trashed">Delete</div>
+                        <div class="ui grey button" id="trashed">Refuse Request</div>
                         <div class="ui green button" id="finished">Mark as Finished</div>
                     </div>
                 </div>
@@ -140,11 +157,13 @@
                         {{content}}
                     </div>
                     <div class="ui horizontal segments">
-                        <div class="ui segment">location</div>
+                        <div class="ui segment"><a class="bold">location</a>    |    {{location}}</div>
+                        <!--
                         <div class="ui segment">{{location}}</div>
+                        -->
                     </div>
                     <div class="ui two buttons">
-                        <div class="ui grey button" id="trashed">Delete</div>
+                        <div class="ui grey button" id="trashed">Refuse Request</div>
                         <div class="ui green button" id="finished">Mark as Finished</div>
                     </div>
                 </div>

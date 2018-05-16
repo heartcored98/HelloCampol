@@ -46,6 +46,9 @@ $(document).ready(function () {
         $(".ui.active.centered.inline.text.loader").css("display", "block");
 
         ref.once("value", function (snapshot) {
+            if (snapshot.length == 0) {
+                document.getElementById('ulcontent').innerHTML = "지금 당장 해야되는 일이 없군요! \n No works to do now!";
+            }
             snapshot.forEach(function (child) {
                 var child_value = child.val();
                 var key = child.key;
@@ -90,7 +93,7 @@ $(document).ready(function () {
         }
         // var key = document.getElementById('cardnews').getAttribute('value');
         // console.log('get key', key);
-    }
+    };
 
     var redraw_marker_left = function () {
         if (task_left.length > 0) {
@@ -102,11 +105,22 @@ $(document).ready(function () {
 
             for (var i = 0; i < task_left.length; i++) {
                 var data = task_left[i].payload;
+
+                // === Choosing IconColor === //
+                var category = data.category;
+                //console.log(category);
+                if (category == 'Danger') var iconColor = "assets/marker-pin-google-red.png";
+                if (category == 'Repair') var iconColor = "assets/marker-pin-google-blue.png";
+                if (category == 'Living') var iconColor = "assets/marker-pin-google-yellow.png";
+                //console.log(iconColor);
+
+                // === Choosing Coordinate and make marker with given png === //
                 var coordinate = data.coordinate;
                 var marker_pos = {lat: coordinate[0], lng: coordinate[1]};
                 var marker = new google.maps.Marker({
                     position: marker_pos,
-                    map: map
+                    map: map,
+                    icon: iconColor
                 });
                 marker_list.push(marker);
                 bounds.extend(marker.position)
@@ -114,7 +128,7 @@ $(document).ready(function () {
             map.fitBounds(bounds);
             if (map.getZoom() > 16) map.setZoom(15);
         }
-    }
+    };
 
 
     update_task();
@@ -146,7 +160,7 @@ $(document).ready(function () {
         deletecard.remove();
     });
 
-    $(document).on('click', "#lowerbar", function () {
+    $(document).on('click', "#expand_message", function () {
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
