@@ -37,6 +37,9 @@ $(document).ready(function () {
     var task_done = [];
     var task_trash = [];
     var marker_list = [];
+    var deletecard;
+    var deletingKey;
+    var delete_index;
     $(".ui.active.centered.inline.text.loader").css("display", "none");
 
 
@@ -135,9 +138,9 @@ $(document).ready(function () {
 
 
     $(document).on('click', "#finished", function () {
-        var deletecard = $(this).closest("li");
-        var deletingKey = deletecard.find("p").html();
-        var delete_index = deletecard.index();
+        deletecard = $(this).closest("li");
+        deletingKey = deletecard.find("p").html();
+        delete_index = deletecard.index();
 
         // === Update DB === //
         task_left.splice(delete_index, 1);
@@ -148,19 +151,34 @@ $(document).ready(function () {
     });
 
     $(document).on('click', "#trashed", function () {
-        var deletecard = $(this).closest("li");
-        var deletingKey = deletecard.find("p").html();
-        var delete_index = deletecard.index();
+        deletecard = $(this).closest("li");
+        deletingKey = deletecard.find("p").html();
+        delete_index = deletecard.index();
+        $("#TempModal").css('display','block');
+        $("#ModalBox").css('display', 'block');
+    });
 
+    $(document).on('click', ".DeleteRequest", function() {
+        console.log("DeleteRequest censored");
         // === Update DB === //
         task_left.splice(delete_index, 1);
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: -1});
         deletecard.remove();
+        $("#TempModal").css('display','none');
+        $("#ModalBox").css('display', 'none');
+        if(task_left.length == 0){
+            document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
+        }
     });
 
-    $(document).on('click', "#expand_message", function () {
+    $(document).on('click', ".CancelDelete", function(){
+        $("#TempModal").css('display','none');
+        $("#ModalBox").css('display', 'none');
+    });
+
+    $(document).on('click', "#expand_message", function() {
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
