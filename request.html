@@ -18,54 +18,58 @@
     <link href="./request.css" rel="stylesheet"/>
 
 
-
 </head>
 <body>
-    <div id="TempModal"></div>
-    <div class="ui card centered" id="ModalBox">
-        <div class="content">
-            <div class="header">정말로 삭제하시겠습니까?</div>
-        </div>
-        <div class="extra content">
-            <div class="ui two buttons">
-                <div class="ui grey button CancelDelete">아니오</div>
-                <div class="ui red button DeleteRequest">네</div>
-            </div>
+<div id="TempModal"></div>
+<div class="ui card centered" id="ModalBox">
+    <div class="content">
+        <div class="header">정말로 삭제하시겠습니까?</div>
+    </div>
+    <div class="extra content">
+        <div class="ui two buttons">
+            <div class="ui grey button CancelDelete">아니오</div>
+            <div class="ui red button DeleteRequest">네</div>
         </div>
     </div>
-    <div class="ui top fixed inverted segment" id="header">
-        <div class="ui top inverted secondary pointing menu">
-            <a class="active item" id="redir_request">
-                해야 할 일
+</div>
+<div class="ui top fixed inverted segment" id="header">
+    <div class="ui top inverted secondary pointing menu">
+        <a class="active item" id="redir_request">
+            해야 할 일
+        </a>
+        <a class="item" id="redir_compl">
+            완료된 일
+        </a>
+        <a class="item" id="redir_notice">
+            공지하기
+        </a>
+        <div class="right menu">
+            <a class="item" id="reset">
+                <i class="fas fa-sync-alt"></i>
             </a>
-            <a class="item" id="redir_compl">
-                완료된 일
+        </div>
+        <div class="right menu">
+            <a class="item" id="gohome">
+                <i class="fas fa-home"></i>
             </a>
-            <a class="item" id="redir_notice">
-                공지하기
-            </a>
-            <div class="right menu">
-                <a class="item" id="gohome">
-                    <i class="fas fa-home"></i>
-                </a>
-            </div>
         </div>
     </div>
+</div>
 
-    <div id="map"></div>
-    <script>
-        function initMap() {
-            var kaist = {lat: 36.369684, lng: 127.362378};
-            window.map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: kaist
-            });
-        }
-    </script>
-    <div class="ui active centered inline text loader">로딩중</div>
+<div id="map"></div>
+<script>
+    function initMap() {
+        var kaist = {lat: 36.369684, lng: 127.362378};
+        window.map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: kaist
+        });
+    }
+</script>
+<div class="ui active centered inline text loader">로딩중</div>
 
-    <ul id="ulcontent">
-    </ul>
+<ul id="ulcontent">
+</ul>
 
 
 <!------------------------------Task Left Template------------------------------>
@@ -82,7 +86,7 @@
                         {{content}}
                     </div>
                     <div class="ui horizontal segments">
-                        <div class="ui segment"><a class="bold">위치</a>    |    {{location}}</div>
+                        <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
                         <!--
                         <div class="ui segment">{{location}}</div>
                         -->
@@ -114,7 +118,7 @@
                         {{content}}
                     </div>
                     <div class="ui horizontal segments">
-                        <div class="ui segment"><a class="bold">위치</a>    |    {{location}}</div>
+                        <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
                         <!--
                         <div class="ui segment">{{location}}</div>
                         -->
@@ -146,7 +150,7 @@
                         {{content}}
                     </div>
                     <div class="ui horizontal segments">
-                        <div class="ui segment"><a class="bold">위치</a>    |    {{location}}</div>
+                        <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
                         <!--
                         <div class="ui segment">{{location}}</div>
                         -->

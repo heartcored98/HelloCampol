@@ -31,6 +31,16 @@ $(document).ready(function () {
         window.location.href = 'index.html';
     })
 
+    // ======= Reset Button ======= //
+    $('#reset').click(function () {
+        ref.once("value", function (snapshot) {
+            snapshot.forEach(function (child) {
+                var key = child.key;
+                ref.child(key).update({flag_done: 0});
+            });
+
+        });
+    })
     // ======= initialize variables ======= //
     ref = database.ref("TaskList");
     var task_left = [];
@@ -154,11 +164,11 @@ $(document).ready(function () {
         deletecard = $(this).closest("li");
         deletingKey = deletecard.find("p").html();
         delete_index = deletecard.index();
-        $("#TempModal").css('display','block');
+        $("#TempModal").css('display', 'block');
         $("#ModalBox").css('display', 'block');
     });
 
-    $(document).on('click', ".DeleteRequest", function() {
+    $(document).on('click', ".DeleteRequest", function () {
         console.log("DeleteRequest censored");
         // === Update DB === //
         task_left.splice(delete_index, 1);
@@ -166,26 +176,26 @@ $(document).ready(function () {
         marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: -1});
         deletecard.remove();
-        $("#TempModal").css('display','none');
+        $("#TempModal").css('display', 'none');
         $("#ModalBox").css('display', 'none');
-        if(task_left.length == 0){
+        if (task_left.length == 0) {
             document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
         }
     });
 
-    $(document).on('click', ".CancelDelete", function(){
-        $("#TempModal").css('display','none');
+    $(document).on('click', ".CancelDelete", function () {
+        $("#TempModal").css('display', 'none');
         $("#ModalBox").css('display', 'none');
     });
 
-    $(document).on('click', "#expand_message", function() {
+    $(document).on('click', "#expand_message", function () {
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
         var delete_index = changing_card.index();
 
         if (variable_content.css("display") === "none") {
-			 variable_content.show();
+            variable_content.show();
             expand_message.html("숨기기" + "<i class='angle up icon'></i>")
 
             marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
