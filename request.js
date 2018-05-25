@@ -88,9 +88,9 @@ $(document).ready(function () {
                 var data = task_left[i].payload;
                 var category = data.category;
                 data["keyvalue"] = task_left[i].key;
-                if (category == 'Danger') var taskbar = Mustache.render(template_danger, data);
-                if (category == 'Repair') var taskbar = Mustache.render(template_repair, data);
-                if (category == 'Living') var taskbar = Mustache.render(template_living, data);
+                if (category == '위험') var taskbar = Mustache.render(template_danger, data);
+                if (category == '수리') var taskbar = Mustache.render(template_repair, data);
+                if (category == '생활') var taskbar = Mustache.render(template_living, data);
                 $("ul").append(taskbar);
             }
         }
@@ -112,9 +112,9 @@ $(document).ready(function () {
                 // === Choosing IconColor === //
                 var category = data.category;
                 //console.log(category);
-                if (category == 'Danger') var iconColor = "assets/marker-pin-google-red.png";
-                if (category == 'Repair') var iconColor = "assets/marker-pin-google-blue.png";
-                if (category == 'Living') var iconColor = "assets/marker-pin-google-yellow.png";
+                if (category == '위험') var iconColor = "assets/marker-pin-google-red.png";
+                if (category == '수리') var iconColor = "assets/marker-pin-google-blue.png";
+                if (category == '생활') var iconColor = "assets/marker-pin-google-yellow.png";
                 //console.log(iconColor);
 
                 // === Choosing Coordinate and make marker with given png === //
@@ -186,12 +186,12 @@ $(document).ready(function () {
 
         if (variable_content.css("display") === "none") {
 			 variable_content.show();
-            expand_message.html("Hide" + "<i class='angle up icon'></i>")
+            expand_message.html("숨기기" + "<i class='angle up icon'></i>")
 
             marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
         } else {
             variable_content.hide();
-            expand_message.html("Show more" + "<i class='angle down icon'></i>");
+            expand_message.html("자세히보기" + "<i class='angle down icon'></i>");
             marker_list[delete_index].setAnimation(null);
 
         }

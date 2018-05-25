@@ -74,9 +74,9 @@ $(document).ready(function () {
                 var data = task_done[i].payload;
                 var category = data.category;
                 data["keyvalue"] = task_done[i].key;
-                if (category == 'Danger') var taskbar = Mustache.render(template_danger, data);
-                if (category == 'Repair') var taskbar = Mustache.render(template_repair, data);
-                if (category == 'Living') var taskbar = Mustache.render(template_living, data);                $("ul").append(taskbar);
+                if (category == '위험') var taskbar = Mustache.render(template_danger, data);
+                if (category == '수리') var taskbar = Mustache.render(template_repair, data);
+                if (category == '생활') var taskbar = Mustache.render(template_living, data);                $("ul").append(taskbar);
             }
         }
         // var key = document.getElementById('cardnews').getAttribute('value');
@@ -119,10 +119,10 @@ $(document).ready(function () {
 
         if (variable_content.css("display") === "none") {
             variable_content.show();
-            expand_message.html("Hide" + "<i class='angle up icon'></i>")
+            expand_message.html("숨기기" + "<i class='angle up icon'></i>")
         } else {
             variable_content.hide();
-            expand_message.html("Show more" + "<i class='angle down icon'></i>")
+            expand_message.html("자세히보기" + "<i class='angle down icon'></i>")
         }
     })
 
