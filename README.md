@@ -6,7 +6,7 @@ This application is implemented as the part of the project held in CS374 `Introd
 ## Author :
 - Bosung Kim ()
 - Donghoon Han (hanuright@gmail.com)
-- Jaeyoung Jo ()
+- Jaeyoung Jo (whwodud9@gmail.com)
 - Panseok Hwang ()
 
 ## What is it for?
