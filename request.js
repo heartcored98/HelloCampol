@@ -37,8 +37,8 @@ $(document).ready(function () {
             snapshot.forEach(function (child) {
                 var key = child.key;
                 ref.child(key).update({flag_done: 0});
+                console.log('reset', key)
             });
-
         });
     })
     // ======= initialize variables ======= //
