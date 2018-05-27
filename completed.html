@@ -13,7 +13,7 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
     <script src="Semantic/semantic.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans" rel="stylesheet">
     <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet"/>
     <link href="./request.css" rel="stylesheet"/>
 
@@ -53,7 +53,7 @@
         <p class="invisible">{{keyvalue}}</p>
         <div id="cardnews" class="ui fluid card">
             <div class="content">
-                <div class="header"><a class="item">
+                <div class="header"><a class="item" id="upperbar">
                     <div class="ui red horizontal label">{{category}}</div>
                     <div class="ui green horizontal basic label">만족</div>
 
@@ -61,7 +61,7 @@
                 </div>
 
                 <div>
-                    <span><i class="comment icon"></i>{{comment}}</span>
+                    <span class="commentsection"><i class="comment icon"></i>{{comment}}</span>
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
         <p class="invisible">{{keyvalue}}</p>
         <div id="cardnews" class="ui fluid card">
             <div class="content">
-                <div class="header"><a class="item">
+                <div class="header"><a class="item" id="upperbar">
                     <div class="ui blue horizontal label">{{category}}</div>
                     <div class="ui green horizontal basic label">만족</div>
 
@@ -104,7 +104,7 @@
                 </div>
 
                 <div>
-                    <span><i class="comment icon"></i>{{comment}}</span>
+                    <span class="commentsection"><i class="comment icon"></i>{{comment}}</span>
                 </div>
             </div>
 
@@ -139,7 +139,7 @@
         <p class="invisible">{{keyvalue}}</p>
         <div id="cardnews" class="ui fluid card">
             <div class="content">
-                <div class="header"><a class="item">
+                <div class="header"><a class="item" id="upperbar">
                     <div class="ui yellow horizontal label">{{category}}</div>
                     <div class="ui green horizontal basic label">만족</div>
 
@@ -147,7 +147,7 @@
                 </div>
 
                 <div>
-                    <span><i class="comment icon"></i>{{comment}}</span>
+                    <span class="commentsection"><i class="comment icon"></i>{{comment}}</span>
                 </div>
             </div>
 

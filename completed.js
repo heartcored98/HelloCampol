@@ -112,7 +112,8 @@ $(document).ready(function () {
         // TODO : Delete corresponding task left thing on local list.
     });
 
-    $(document).on('click', "#expand_message", function () {
+    $(document).on('click', "#upperbar, #expand_message", function () {
+        console.log(this);
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");

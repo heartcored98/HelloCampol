@@ -1,3 +1,4 @@
+
 .ui.segment{
 	margin-bottom: 0px !important;
 	padding-top: 0.5em !important;
@@ -36,6 +37,7 @@
 
 .description {
 	margin-top: 5px !important;
+	font-size: 11pt !important;
 }
 
 #variable_content {
@@ -64,6 +66,7 @@ ul {
     margin: 0px;
     padding: 0px;
 	z-index: 1;
+    font-family: "Nanum Gothic";
 }
 
 #TempModal {
@@ -73,7 +76,7 @@ ul {
 	right: 0;
 	z-index: 100;
 	background-color: black;
-	opacity: 0.9;
+	opacity: 0.5;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
@@ -90,4 +93,12 @@ ul {
 	left: 50%;
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+}
+.ui.label {
+	font-size: 0.87em !important;
+}
+
+.commentsection {
+    font-size: 11pt !important;
+    margin-top: 5px !important;
 }
