@@ -133,8 +133,23 @@ $(document).ready(function () {
                 var marker = new google.maps.Marker({
                     position: marker_pos,
                     map: map,
-                    icon: iconColor
+                    icon: iconColor,
+                    title: data.title
                 });
+
+                marker.addListener('click', function () {
+                    console.log('title', this.title);
+                    for (var i = 0; i < task_left.length; i++) {
+                        if (marker_list[i].title === this.title) {
+                            break;
+                        }
+                    }
+                    console.log('clicking', i);
+                    var query_changing_card = "ul li:nth-child(" + String(i + 1) + ")";
+                    var changing_card = $(query_changing_card);
+                    update_card(changing_card);
+                });
+
                 marker_list.push(marker);
                 bounds.extend(marker.position)
             }
@@ -145,6 +160,23 @@ $(document).ready(function () {
 
 
     update_task();
+
+    var update_card = function (changing_card) {
+        var variable_content = changing_card.find("#variable_content");
+        var expand_message = changing_card.find("#expand_message");
+        var delete_index = changing_card.index();
+
+        if (variable_content.css("display") === "none") {
+            variable_content.show();
+            expand_message.html("숨기기" + "<i class='angle up icon'></i>")
+
+            marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
+        } else {
+            variable_content.hide();
+            expand_message.html("자세히보기" + "<i class='angle down icon'></i>");
+            marker_list[delete_index].setAnimation(null);
+        }
+    }
 
 
     $(document).on('click', "#finished", function () {
@@ -190,21 +222,7 @@ $(document).ready(function () {
 
     $(document).on('click', "#expand_message", function () {
         var changing_card = $(this).closest("li");
-        var variable_content = changing_card.find("#variable_content");
-        var expand_message = changing_card.find("#expand_message");
-        var delete_index = changing_card.index();
-
-        if (variable_content.css("display") === "none") {
-            variable_content.show();
-            expand_message.html("숨기기" + "<i class='angle up icon'></i>")
-
-            marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
-        } else {
-            variable_content.hide();
-            expand_message.html("자세히보기" + "<i class='angle down icon'></i>");
-            marker_list[delete_index].setAnimation(null);
-
-        }
+        update_card(changing_card);
     })
 
 
