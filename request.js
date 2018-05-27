@@ -188,7 +188,8 @@ $(document).ready(function () {
         $("#ModalBox").css('display', 'none');
     });
 
-    $(document).on('click', "#expand_message", function () {
+    $(document).on('click', "#lowerbar", function () {
+        console.log(this);
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
@@ -205,7 +206,8 @@ $(document).ready(function () {
             marker_list[delete_index].setAnimation(null);
 
         }
-    })
+    });
+
 
 
 });
