@@ -167,16 +167,16 @@ $(document).ready(function () {
         var delete_index = changing_card.index();
 
         if (variable_content.css("display") === "none") {
-            variable_content.show();
+            variable_content.slideDown();
             expand_message.html("숨기기" + "<i class='angle up icon'></i>")
 
             marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
         } else {
-            variable_content.hide();
+            variable_content.slideUp();
             expand_message.html("자세히보기" + "<i class='angle down icon'></i>");
             marker_list[delete_index].setAnimation(null);
         }
-    }
+    };
 
 
     $(document).on('click', "#finished", function () {
@@ -202,7 +202,7 @@ $(document).ready(function () {
 
     $(document).on('click', "#trashed", function () {
         deletecard = $(this).closest("li");
-        deletingKey = deletecard.find("p").html();
+        deletingKey = deletecard.find("p").html();00
         delete_index = deletecard.index();
         $("#TempModal").fadeIn();
         $("#ModalBox").fadeIn();
