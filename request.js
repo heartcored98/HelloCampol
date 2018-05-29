@@ -60,7 +60,7 @@ $(document).ready(function () {
 
         ref.once("value", function (snapshot) {
             if (snapshot.length == 0) {
-                document.getElementById('ulcontent').innerHTML = "지금 당장 해야되는 일이 없군요! \n No works to do now!";
+                document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
             }
             snapshot.forEach(function (child) {
                 var child_value = child.val();
@@ -87,7 +87,7 @@ $(document).ready(function () {
         $(".ui.active.centered.inline.text.loader").css("display", "none");
 
         if (task_left.length == 0) {
-            document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
+            document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
         }
         else {
             var template_danger = $("#task-left-template-danger").html();
@@ -189,15 +189,23 @@ $(document).ready(function () {
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: 1});
-        deletecard.remove();
+        console.log("finished");
+        deletecard.slideUp(function(){
+            deletecard.remove();
+            console.log(task_left.length);
+            if (task_left.length == 0) {
+                document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
+            }
+        });
+        //deletecard.remove();
     });
 
     $(document).on('click', "#trashed", function () {
         deletecard = $(this).closest("li");
         deletingKey = deletecard.find("p").html();
         delete_index = deletecard.index();
-        $("#TempModal").css('display', 'block');
-        $("#ModalBox").css('display', 'block');
+        $("#TempModal").fadeIn();
+        $("#ModalBox").fadeIn();
     });
 
     $(document).on('click', ".DeleteRequest", function () {
@@ -207,26 +215,27 @@ $(document).ready(function () {
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: -1});
-        deletecard.remove();
-        $("#TempModal").css('display', 'none');
-        $("#ModalBox").css('display', 'none');
-        if (task_left.length == 0) {
-            document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
-        }
+        deletecard.slideUp(function(){
+            deletecard.remove();
+            console.log(task_left.length);
+            if (task_left.length == 0) {
+                document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
+            }
+        });
+        $("#TempModal").fadeOut();
+        $("#ModalBox").fadeOut();
     });
 
     $(document).on('click', ".CancelDelete", function () {
-        $("#TempModal").css('display', 'none');
-        $("#ModalBox").css('display', 'none');
+        $("#TempModal").fadeOut();
+        $("#ModalBox").fadeOut();
     });
 
+
     $(document).on('click', "#lowerbar", function () {
-        console.log(this);
         var changing_card = $(this).closest("li");
         update_card(changing_card);
     })
-
-
 });
 
 
