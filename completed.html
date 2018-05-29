@@ -20,6 +20,18 @@
 
 </head>
 <body>
+<div id="TempModal"></div>
+<div class="ui card centered" id="ModalBox">
+    <div class="content">
+        <div class="header">정말로 완료된 기록에서 지우시겠습니까?</div>
+    </div>
+    <div class="extra content">
+        <div class="ui two buttons">
+            <div class="ui grey button CancelDelete">아니오</div>
+            <div class="ui red button DeleteRequest">네</div>
+        </div>
+    </div>
+</div>
 <div class="ui top fixed inverted segment" id="header">
     <div class="ui top inverted secondary pointing menu">
         <a class="item" id="redir_request">
@@ -38,9 +50,7 @@
         </div>
     </div>
 </div>
-
-
-<div class="ui active centered inline text loader">로딩중</div>
+<div class="ui active centered inline text loader" id="place">로딩중</div>
 
 <ul id="ulcontent">
 </ul>

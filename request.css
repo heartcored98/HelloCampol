@@ -94,6 +94,38 @@ ul {
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
+
+#EmptySigner {
+	overflow: hidden;
+	text-align: center;
+	z-index: 101;
+	margin: 0;
+	position: fixed;
+	top: 60%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#EmptySigner2 {
+	overflow: hidden;
+	text-align: center;
+	z-index: 101;
+	margin: 0;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#spacer {
+	margin-top: 5px;
+	font-size: 11pt;
+	font-weight: bold;
+	opacity: 0.4;
+}
+
 .ui.label {
 	font-size: 0.87em !important;
 }
@@ -101,4 +133,16 @@ ul {
 .commentsection {
     font-size: 11pt !important;
     margin-top: 5px !important;
+}
+
+#place {
+	overflow: hidden;
+	text-align: center;
+	z-index: 101;
+	margin: 0;
+	position: fixed;
+	top: 38%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
