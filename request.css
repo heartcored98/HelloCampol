@@ -63,10 +63,12 @@ ui.fluid.card {
 
 ul {
     list-style-type: none;
-    margin: 0px;
+    margin: auto;
     padding: 0px;
 	z-index: 1;
     font-family: "Nanum Gothic";
+	width: 98%;
+
 }
 
 #TempModal {
@@ -93,6 +95,7 @@ ul {
 	left: 50%;
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+	font-family: "Nanum Gothic" !important;
 }
 
 #EmptySigner {
