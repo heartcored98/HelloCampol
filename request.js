@@ -201,15 +201,18 @@ $(document).ready(function () {
     });
 
     $(document).on('click', "#trashed", function () {
+        console.log(document.getElementById('RefuseInput').value);
         deletecard = $(this).closest("li");
-        deletingKey = deletecard.find("p").html();00
+        deletingKey = deletecard.find("p").html();
         delete_index = deletecard.index();
+        document.getElementById('RefuseInput').value = '';
         $("#TempModal").fadeIn();
         $("#ModalBox").fadeIn();
+
     });
 
     $(document).on('click', ".DeleteRequest", function () {
-        console.log("DeleteRequest censored");
+        console.log("DeleteRequest Sensed");
         // === Update DB === //
         task_left.splice(delete_index, 1);
         marker_list[delete_index].setMap(null);
@@ -217,7 +220,7 @@ $(document).ready(function () {
         ref.child(deletingKey).update({flag_done: -1});
         deletecard.slideUp(function(){
             deletecard.remove();
-            console.log(task_left.length);
+            //console.log(task_left.length);
             if (task_left.length == 0) {
                 document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
             }
@@ -227,6 +230,7 @@ $(document).ready(function () {
     });
 
     $(document).on('click', ".CancelDelete", function () {
+        console.log("CancelDelete Sensed");
         $("#TempModal").fadeOut();
         $("#ModalBox").fadeOut();
     });

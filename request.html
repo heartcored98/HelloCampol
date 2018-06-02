@@ -22,12 +22,20 @@
 <div id="TempModal"></div>
 <div class="ui card centered" id="ModalBox">
     <div class="content">
-        <div class="header">정말로 삭제하시겠습니까?</div>
+        <div class="header" >정말로 거절하시겠습니까?</div>
+    </div>
+    <div class="extra content">
+        <div class="ui form">
+            <div class="field">
+                <label>거절하시는 이유 (입력권장)</label>
+                <input type="text" id="RefuseInput" placeholder="ex)학생지원팀으로 문의바랍니다" autofocus>
+            </div>
+        </div>
     </div>
     <div class="extra content">
         <div class="ui two buttons">
-            <div class="ui grey button CancelDelete">아니오</div>
-            <div class="ui red button DeleteRequest">네</div>
+            <div class="ui grey button CancelDelete">취소</div>
+            <div class="ui red button DeleteRequest">전송</div>
         </div>
     </div>
 </div>
@@ -84,8 +92,9 @@
                     <div class="description">
                         {{content}}
                     </div>
-                    <div class="ui horizontal segments">
+                    <div class="ui segments">
                         <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
+                        <div class="ui segment"><a class="bold">의뢰인</a> | 홍길동 (010-9645-1872)</div>
                         <!--
                         <div class="ui segment">{{location}}</div>
                         -->
@@ -116,8 +125,9 @@
                     <div class="description">
                         {{content}}
                     </div>
-                    <div class="ui horizontal segments">
+                    <div class="ui segments">
                         <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
+                        <div class="ui segment"><a class="bold">의뢰인</a> | 김철수 (010-1234-1234)</div>
                         <!--
                         <div class="ui segment">{{location}}</div>
                         -->
@@ -148,8 +158,9 @@
                     <div class="description">
                         {{content}}
                     </div>
-                    <div class="ui horizontal segments">
+                    <div class="ui segments">
                         <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
+                        <div class="ui segment"><a class="bold">의뢰인</a> | 이영희 (010-9212-3253)</div>
                         <!--
                         <div class="ui segment">{{location}}</div>
                         -->
