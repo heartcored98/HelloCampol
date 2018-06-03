@@ -30,90 +30,48 @@ $(document).ready(function () {
     // ========== upload setting ========= //
 
     $("#snsupload").click(function(){
-        clickfunction = function (callback){
-            $("#hide").toggleClass("none");
-            $("#uploadalarm").toggleClass("none");
-            $("#yes").toggleClass("none");
-            $("#cancel").toggleClass("none");
-            callback();
-        }
-
-        clickfunction(function(){
-            $("#hide").animate({
-                opacity: '1'
-            }, 500)
-            $("#uploadalarm").animate({
-                opacity: '1'
-            }, 500)
-            $("#yes").animate({
-                opacity: '1'
-            }, 500)
-            $("#cancel").animate({
-                opacity: '1'
-            }, 500)
-        })
+        deletecard = $(this).closest("li");
+        deletingKey = deletecard.find("p").html();
+        delete_index = deletecard.index();
+        $("#TempModal").fadeIn();
+        $("#ModalBox").fadeIn();
     })
 
-    $("#yes").click(function(){
-        $("#uploadalarm").animate({
-            opacity: '0'
-        }, 500, function(){
-            $("#uploadalarm").toggleClass("none")
-        });
-        $("#yes").animate({
-            opacity: '0'
-        }, 500, function(){
-            $("#yes").toggleClass("none")
-        });
-        $("#cancel").animate({
-            opacity: '0'
-        }, 500, function(){
-            $("#cancel").toggleClass("none")
-        });
-        $("#complete").toggleClass("none");
-        $("#complete").animate({
-            opacity: '1'
-        }, 500, function(){
-                setTimeout(function(){
-                    $("#hide").animate({
-                        opacity: '0'
-                    }, 500, function(){
-                        $("#hide").toggleClass("none")
-                    });
-                    $("#complete").animate({
-                        opacity: '0'
-                    }, 500, function(){
-                        $("#complete").toggleClass("none")
-                    });
-                }, 1000);
-        });
+    $(document).on('click', ".DeleteRequest", function () {
+        for (var i=0; i<2; i++){
+            if (i==0){
+                $("#ModalBox").fadeOut();
+                $("#completeBox").fadeIn();
+
+            }
+            if (i==1){
+                setTimeout(function() {
+                    $("#TempModal").fadeOut();
+                    $("#completeBox").fadeOut();
+                }, 2000);
+            }
+        }
+
+
     });
 
-
-    $("#cancel").on('click', function(){
-
-        $("#hide").animate({
-            opacity: '0'
-        }, 500, function(){
-            $("#hide").toggleClass("none")
-        });
-        $("#uploadalarm").animate({
-            opacity: '0'
-        }, 500, function(){
-            $("#uploadalarm").toggleClass("none")
-        });
-        $("#yes").animate({
-            opacity: '0'
-        }, 500, function(){
-            $("#yes").toggleClass("none")
-        });
-        $("#cancel").animate({
-            opacity: '0'
-        }, 500, function(){
-            $("#cancel").toggleClass("none")
-        });
-
+    $(document).on('click', ".CancelDelete", function () {
+        $("#TempModal").fadeOut();
+        $("#ModalBox").fadeOut();
     });
+
+ // img expanding
+    var $button = $(".swiper-slide")
+        $target = $('#lightbox-overlay'),
+		$targetImg = $target.find('img');
+    $button.click(function(){
+		var newImg = $(this).find('img').attr('src');
+		$target.addClass('visible');
+		$targetImg.attr('src', newImg);
+	});
+	$target.click(function(){
+		$target.removeClass('visible');
+	});
 
 
     // ====== Page Redirection Setting =======//
