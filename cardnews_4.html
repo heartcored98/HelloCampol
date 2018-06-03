@@ -22,69 +22,73 @@
 
 
 </head>
-<body>
+    <body>
 
-<div class="ui top fixed inverted segment" id="header">
-    <div class="ui top inverted secondary pointing menu">
-				<a class="item" id="redir_request">
-					해야 할 일
-				</a>
-				<a class="item" id="redir_compl">
-					완료된 일
-				</a>
-				<a class="active item" id="redir_notice">
-					공지하기
-				</a>
-        <div class="right menu">
-            <a class="item" id="gohome">
-                <i class="fas fa-home"></i>
-            </a>
+        <div class="ui top fixed inverted segment" id="header">
+            <div class="ui top inverted secondary pointing menu">
+                        <a class="item" id="redir_request">
+                            해야 할 일
+                        </a>
+                        <a class="item" id="redir_compl">
+                            완료된 일
+                        </a>
+                        <a class="active item" id="redir_notice">
+                            공지하기
+                        </a>
+                <div class="right menu">
+                    <a class="item" id="gohome">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div id="cardnewstitle">
-    음주안전
-</div>
-
-<div id="cardnewsimg">
-    <div class="swiper-container">
-        <div id="cont" class="swiper-wrapper">
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img1.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img2.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img3.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img4.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img5.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img6.JPG" width="80%"/></div>
-
-
+        <div id="cardnewstitle">
+            음주안전
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
 
-    </div>
-</div>
-<div id="selectionwrap">
-    <div class="selection traffic"><img src="./cardnews/selection/traffic.JPG" id="trafficimg" width="50%"/></div>
-    <div class="selection dormitory"><img src="./cardnews/selection/dormitory.JPG" id="dormitoryimg" width="50%"/></div>
-    <div class="selection laboratory"><img src="./cardnews/selection/laboratory.JPG" id="laboratoryimg" width="50%"/></div>
-    <div class="selection drinking"><img src="./cardnews/selection/drinking.JPG" id="drinkingimg" width="50%"/></div>
-</div>
-
-<div id="snsupload"><img src="./cardnews/selection/sns.jpg" width="30%"/></div>
-
-<img src="./cardnews/alram/hide.png" id="hide" class ="none" width="100%" height="100%"/>
-<img src="./cardnews/alram/upload.png" id="uploadalarm" class ="none"  width="70%"/>
-<img src="./cardnews/alram/yes.png" id="yes" class ="none"  width="50px"/>
-<img src="./cardnews/alram/cancel.png" id="cancel" class ="none"  width="50px"/>
-<img src="./cardnews/alram/complete.png" id="complete" class ="none"  width="70%"/>
+        <div id="cardnewsimg">
+            <div class="swiper-container">
+                <div id="cont" class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img1.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img2.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img3.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img4.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img5.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img6.JPG" width="80%"/></div>
 
 
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+
+            </div>
+        </div>
+        <div id="selectionwrap">
+            <div class="selection traffic"><img src="./cardnews/selection/traffic.JPG" id="trafficimg" width="50%"/></div>
+            <div class="selection dormitory"><img src="./cardnews/selection/dormitory.JPG" id="dormitoryimg" width="50%"/></div>
+            <div class="selection laboratory"><img src="./cardnews/selection/laboratory.JPG" id="laboratoryimg" width="50%"/></div>
+            <div class="selection drinking"><img src="./cardnews/selection/drinking.JPG" id="drinkingimg" width="50%"/></div>
+        </div>
+
+        <div id="snsupload"><img src="./cardnews/selection/sns.jpg" width="30%"/></div>
+
+        <div id="lightbox-overlay">
+            <img src="" alt="Lightbox image" title="Click anywhere to close" id="lightbox-image" />
+        </div>
+
+        <img src="./cardnews/alram/hide.png" id="hide" class ="none" width="100%" height="105%"/>
+        <img src="./cardnews/alram/upload.png" id="uploadalarm" class ="none"  width="70%"/>
+        <img src="./cardnews/alram/yes.png" id="yes" class ="none"  width="50px"/>
+        <img src="./cardnews/alram/cancel.png" id="cancel" class ="none"  width="50px"/>
+        <img src="./cardnews/alram/complete.png" id="complete" class ="none"  width="70%"/>
 
 
-<script src="jquery/js/jquery-3.3.1.min.js"></script>
-<script src="jquery/js/swiper.min.js"></script>
-<script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-<script src="cardnews.js"></script>
-</body>
+
+
+        <script src="jquery/js/jquery-3.3.1.min.js"></script>
+        <script src="jquery/js/swiper.min.js"></script>
+        <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+        <script src="cardnews.js"></script>
+    </body>
 </html>

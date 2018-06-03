@@ -94,8 +94,8 @@ body{
 
 #yes{
     position: absolute;
-    top:290px;
-    left : 200px;
+    top:330px;
+    left : 240px;
     z-index: 3;
     opacity: 0;
 
@@ -103,8 +103,8 @@ body{
 
 #cancel{
     position: absolute;
-    top:290px;
-    left : 250px;
+    top:330px;
+    left : 290px;
     z-index: 3;
     opacity: 0;
 
@@ -121,4 +121,34 @@ body{
     z-index: 2;
     opacity: 0;
 
+}
+
+#lightbox-overlay {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(29, 31, 33, .95);
+    transition: opacity .3s ease-in;
+}
+
+    #lightbox-overlay.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+#lightbox-image {
+    max-height: 90%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    background: transparent url("cardnews/alram/loading.gif") 50% 50% no-repeat;
+    text-indent: -99999px;
 }
