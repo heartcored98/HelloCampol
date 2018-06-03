@@ -22,69 +22,102 @@
 
 
 </head>
-<body>
+    <body>
 
-<div class="ui top fixed inverted segment" id="header">
-    <div class="ui top inverted secondary pointing menu">
-				<a class="item" id="redir_request">
-					해야 할 일
-				</a>
-				<a class="item" id="redir_compl">
-					완료된 일
-				</a>
-				<a class="active item" id="redir_notice">
-					공지하기
-				</a>
-        <div class="right menu">
-            <a class="item" id="gohome">
-                <i class="fas fa-home"></i>
-            </a>
+        <div class="ui top fixed inverted segment" id="header">
+            <div class="ui top inverted secondary pointing menu">
+                        <a class="item" id="redir_request">
+                            해야 할 일
+                        </a>
+                        <a class="item" id="redir_compl">
+                            완료된 일
+                        </a>
+                        <a class="active item" id="redir_notice">
+                            공지하기
+                        </a>
+                <div class="right menu">
+                    <a class="item" id="gohome">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div id="cardnewstitle">
-    음주안전
-</div>
-
-<div id="cardnewsimg">
-    <div class="swiper-container">
-        <div id="cont" class="swiper-wrapper">
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img1.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img2.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img3.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img4.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img5.JPG" width="80%"/></div>
-            <div class="swiper-slide"><img src="./cardnews/drinking safety/img6.JPG" width="80%"/></div>
-
-
+        <div id="cardnewstitle">
+            음주안전
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
 
-    </div>
-</div>
-<div id="selectionwrap">
-    <div class="selection traffic"><img src="./cardnews/selection/traffic.JPG" id="trafficimg" width="50%"/></div>
-    <div class="selection dormitory"><img src="./cardnews/selection/dormitory.JPG" id="dormitoryimg" width="50%"/></div>
-    <div class="selection laboratory"><img src="./cardnews/selection/laboratory.JPG" id="laboratoryimg" width="50%"/></div>
-    <div class="selection drinking"><img src="./cardnews/selection/drinking.JPG" id="drinkingimg" width="50%"/></div>
-</div>
-
-<div id="snsupload"><img src="./cardnews/selection/sns.jpg" width="30%"/></div>
-
-<img src="./cardnews/alram/hide.png" id="hide" class ="none" width="100%" height="100%"/>
-<img src="./cardnews/alram/upload.png" id="uploadalarm" class ="none"  width="70%"/>
-<img src="./cardnews/alram/yes.png" id="yes" class ="none"  width="50px"/>
-<img src="./cardnews/alram/cancel.png" id="cancel" class ="none"  width="50px"/>
-<img src="./cardnews/alram/complete.png" id="complete" class ="none"  width="70%"/>
+        <div id="cardnewsimg">
+            <div class="swiper-container">
+                <div id="cont" class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img1.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img2.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img3.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img4.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img5.JPG" width="80%"/></div>
+                    <div class="swiper-slide"><img src="./cardnews/drinking safety/img6.JPG" width="80%"/></div>
 
 
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+
+            </div>
+        </div>
+        <div id="selectionwrap">
+            <div class="selection traffic"><img src="./cardnews/selection/traffic.png" id="trafficimg" width="50%"/></div>
+            <div class="selection wrap4"><img src="./cardnews/selection/wrap.png" id="trafficimg" width="200px"/></div>
+            <div class="selection dormitory"><img src="./cardnews/selection/dormitory.png" id="dormitoryimg" width="50%"/></div>
+            <div class="selection laboratory"><img src="./cardnews/selection/laboratory.png" id="laboratoryimg" width="50%"/></div>
+            <div class="selection drinking"><img src="./cardnews/selection/drinking.png" id="drinkingimg" width="50%"/></div>
+        </div>
+
+        <div id="buttonwrap"><button id="snsupload" class="ui black button">SNS 업로드</button></div>
+
+        <div id="lightbox-overlay">
+            <img src="" alt="Lightbox image" title="Click anywhere to close" id="lightbox-image" />
+        </div>
+
+        <div id="TempModal"></div>
+        <div class="ui card centered" id="ModalBox">
+            <div class="content">
+                <div class="header1">SNS에 업로드 하시겠습니까?</div>
+            </div>
+            <div class="extra content">
+                <div class="ui form">
+                    <div class="field">
+                        <label>게시글 작성</label>
+                        <input type="text" id="RefuseInput" placeholder="ex) 카포전 교통안전관리 카드뉴스" autofocus>
+                    </div>
+
+                </div>
+            </div>
+            <div class="extra content">
+                <div class="ui two buttons">
+                    <div class="ui grey button CancelDelete">아니오</div>
+                    <div class="ui green button DeleteRequest">네</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui card centered" id="completeBox">
+            <div class="content">
+                <div class="header2">정상적으로 업로드 되었습니다</div>
+            </div>
+        </div>
+
+        <img src="./cardnews/alram/hide.png" id="hide" class ="none" width="100%" height="105%"/>
+        <img src="./cardnews/alram/upload.png" id="uploadalarm" class ="none"  width="70%"/>
+        <img src="./cardnews/alram/yes.png" id="yes" class ="none"  width="50px"/>
+        <img src="./cardnews/alram/cancel.png" id="cancel" class ="none"  width="50px"/>
+        <img src="./cardnews/alram/complete.png" id="complete" class ="none"  width="70%"/>
 
 
-<script src="jquery/js/jquery-3.3.1.min.js"></script>
-<script src="jquery/js/swiper.min.js"></script>
-<script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-<script src="cardnews.js"></script>
-</body>
+
+
+        <script src="jquery/js/jquery-3.3.1.min.js"></script>
+        <script src="jquery/js/swiper.min.js"></script>
+        <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+        <script src="cardnews.js"></script>
+    </body>
 </html>
