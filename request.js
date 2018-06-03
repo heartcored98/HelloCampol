@@ -31,6 +31,16 @@ $(document).ready(function () {
         window.location.href = 'index.html';
     })
 
+    // ======= Reset Button ======= //
+    $('#reset').click(function () {
+        ref.once("value", function (snapshot) {
+            snapshot.forEach(function (child) {
+                var key = child.key;
+                ref.child(key).update({flag_done: 0});
+                console.log('reset', key)
+            });
+        });
+    })
     // ======= initialize variables ======= //
     ref = database.ref("TaskList");
     var task_left = [];
@@ -50,7 +60,7 @@ $(document).ready(function () {
 
         ref.once("value", function (snapshot) {
             if (snapshot.length == 0) {
-                document.getElementById('ulcontent').innerHTML = "지금 당장 해야되는 일이 없군요! \n No works to do now!";
+                document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
             }
             snapshot.forEach(function (child) {
                 var child_value = child.val();
@@ -77,7 +87,7 @@ $(document).ready(function () {
         $(".ui.active.centered.inline.text.loader").css("display", "none");
 
         if (task_left.length == 0) {
-            document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
+            document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
         }
         else {
             var template_danger = $("#task-left-template-danger").html();
@@ -88,9 +98,9 @@ $(document).ready(function () {
                 var data = task_left[i].payload;
                 var category = data.category;
                 data["keyvalue"] = task_left[i].key;
-                if (category == 'Danger') var taskbar = Mustache.render(template_danger, data);
-                if (category == 'Repair') var taskbar = Mustache.render(template_repair, data);
-                if (category == 'Living') var taskbar = Mustache.render(template_living, data);
+                if (category == '위험') var taskbar = Mustache.render(template_danger, data);
+                if (category == '수리') var taskbar = Mustache.render(template_repair, data);
+                if (category == '생활') var taskbar = Mustache.render(template_living, data);
                 $("ul").append(taskbar);
             }
         }
@@ -112,9 +122,9 @@ $(document).ready(function () {
                 // === Choosing IconColor === //
                 var category = data.category;
                 //console.log(category);
-                if (category == 'Danger') var iconColor = "assets/marker-pin-google-red.png";
-                if (category == 'Repair') var iconColor = "assets/marker-pin-google-blue.png";
-                if (category == 'Living') var iconColor = "assets/marker-pin-google-yellow.png";
+                if (category == '위험') var iconColor = "assets/marker-pin-google-red.png";
+                if (category == '수리') var iconColor = "assets/marker-pin-google-blue.png";
+                if (category == '생활') var iconColor = "assets/marker-pin-google-yellow.png";
                 //console.log(iconColor);
 
                 // === Choosing Coordinate and make marker with given png === //
@@ -123,8 +133,23 @@ $(document).ready(function () {
                 var marker = new google.maps.Marker({
                     position: marker_pos,
                     map: map,
-                    icon: iconColor
+                    icon: iconColor,
+                    title: data.title
                 });
+
+                marker.addListener('click', function () {
+                    console.log('title', this.title);
+                    for (var i = 0; i < task_left.length; i++) {
+                        if (marker_list[i].title === this.title) {
+                            break;
+                        }
+                    }
+                    console.log('clicking', i);
+                    var query_changing_card = "ul li:nth-child(" + String(i + 1) + ")";
+                    var changing_card = $(query_changing_card);
+                    update_card(changing_card);
+                });
+
                 marker_list.push(marker);
                 bounds.extend(marker.position)
             }
@@ -135,6 +160,23 @@ $(document).ready(function () {
 
 
     update_task();
+
+    var update_card = function (changing_card) {
+        var variable_content = changing_card.find("#variable_content");
+        var expand_message = changing_card.find("#expand_message");
+        var delete_index = changing_card.index();
+
+        if (variable_content.css("display") === "none") {
+            variable_content.slideDown();
+            expand_message.html("숨기기" + "<i class='angle up icon'></i>")
+
+            marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
+        } else {
+            variable_content.slideUp();
+            expand_message.html("자세히보기" + "<i class='angle down icon'></i>");
+            marker_list[delete_index].setAnimation(null);
+        }
+    };
 
 
     $(document).on('click', "#finished", function () {
@@ -147,57 +189,57 @@ $(document).ready(function () {
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: 1});
-        deletecard.remove();
+        console.log("finished");
+        deletecard.slideUp(function(){
+            deletecard.remove();
+            console.log(task_left.length);
+            if (task_left.length == 0) {
+                document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
+            }
+        });
+        //deletecard.remove();
     });
 
     $(document).on('click', "#trashed", function () {
+        console.log(document.getElementById('RefuseInput').value);
         deletecard = $(this).closest("li");
         deletingKey = deletecard.find("p").html();
         delete_index = deletecard.index();
-        $("#TempModal").css('display','block');
-        $("#ModalBox").css('display', 'block');
+        document.getElementById('RefuseInput').value = '';
+        $("#TempModal").fadeIn();
+        $("#ModalBox").fadeIn();
+
     });
 
-    $(document).on('click', ".DeleteRequest", function() {
-        console.log("DeleteRequest censored");
+    $(document).on('click', ".DeleteRequest", function () {
+        console.log("DeleteRequest Sensed");
         // === Update DB === //
         task_left.splice(delete_index, 1);
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: -1});
-        deletecard.remove();
-        $("#TempModal").css('display','none');
-        $("#ModalBox").css('display', 'none');
-        if(task_left.length == 0){
-            document.getElementById('ulcontent').innerHTML = "더 이상 할일이 없어요! \n No more Work!";
-        }
+        deletecard.slideUp(function(){
+            deletecard.remove();
+            //console.log(task_left.length);
+            if (task_left.length == 0) {
+                document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
+            }
+        });
+        $("#TempModal").fadeOut();
+        $("#ModalBox").fadeOut();
     });
 
-    $(document).on('click', ".CancelDelete", function(){
-        $("#TempModal").css('display','none');
-        $("#ModalBox").css('display', 'none');
+    $(document).on('click', ".CancelDelete", function () {
+        console.log("CancelDelete Sensed");
+        $("#TempModal").fadeOut();
+        $("#ModalBox").fadeOut();
     });
 
-    $(document).on('click', "#expand_message", function() {
+
+    $(document).on('click', "#lowerbar", function () {
         var changing_card = $(this).closest("li");
-        var variable_content = changing_card.find("#variable_content");
-        var expand_message = changing_card.find("#expand_message");
-        var delete_index = changing_card.index();
-
-        if (variable_content.css("display") === "none") {
-			 variable_content.show();
-            expand_message.html("Hide" + "<i class='angle up icon'></i>")
-
-            marker_list[delete_index].setAnimation(google.maps.Animation.BOUNCE);
-        } else {
-            variable_content.hide();
-            expand_message.html("Show more" + "<i class='angle down icon'></i>");
-            marker_list[delete_index].setAnimation(null);
-
-        }
+        update_card(changing_card);
     })
-
-
 });
 
 

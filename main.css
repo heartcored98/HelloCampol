@@ -1,6 +1,6 @@
 body {
-  /*background-color: aquamarine;*/
-  margin: 0 auto;
+  	/*background-color: aquamarine;*/
+  	margin: 0 auto;
 	text-align: center;
 }
 
@@ -23,12 +23,12 @@ body {
 	background-color: transparent;
 	border-color : transparent;
 	position: fixed;
-  top: 60%;
-  left: 50%;
+    top: 60%;
+    left: 50%;
 	width : 80%;
 	margin: 0 auto;
   transform: translate(-50%, -50%);
- }
+}
 
 .massive.ui.button{
 	/*width : 90% !important;
@@ -92,6 +92,13 @@ body, html {
 
 .ui.inverted.button {
 	width: 80% !important;
+    font-family: "Nanum Gothic", sans-serif !important;
+    font-size: 14pt;
+}
+
+
+h2 {
+    font-family: "Nanum Gothic", sans-serif;
 }
 
 

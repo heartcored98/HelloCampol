@@ -34,7 +34,9 @@ $(document).ready(function () {
     // ======= initialize variables ======= //
     ref = database.ref("TaskList");
     var task_done = [];
-    var task_trash = [];
+    var deletecard;
+    var deletingKey;
+    var delete_index;
     $(".ui.active.centered.inline.text.loader").css("display", "none");
 
 
@@ -62,7 +64,7 @@ $(document).ready(function () {
         $(".ui.active.centered.inline.text.loader").css("display", "none");
 
         if (task_done.length == 0) {
-            document.getElementById('ulcontent').innerHTML = "당장은 할일을 해야겠네요!\n You should have to work now!";
+            document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner2"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">완료된 일이 아직 없군요!</p></div>';
         }
         else {
             var template_danger = $("#task-done-template-danger").html();
@@ -74,55 +76,77 @@ $(document).ready(function () {
                 var data = task_done[i].payload;
                 var category = data.category;
                 data["keyvalue"] = task_done[i].key;
-                if (category == 'Danger') var taskbar = Mustache.render(template_danger, data);
-                if (category == 'Repair') var taskbar = Mustache.render(template_repair, data);
-                if (category == 'Living') var taskbar = Mustache.render(template_living, data);                $("ul").append(taskbar);
+                if (category == '위험') var taskbar = Mustache.render(template_danger, data);
+                if (category == '수리') var taskbar = Mustache.render(template_repair, data);
+                if (category == '생활') var taskbar = Mustache.render(template_living, data);
+                $("ul").append(taskbar);
             }
         }
         // var key = document.getElementById('cardnews').getAttribute('value');
         // console.log('get key', key);
-    }
+    };
 
 
     update_task();
 
 
     $(document).on('click', "#undo_finished", function () {
-        var deletecard = $(this).closest("li");
-        var deletingKey = deletecard.find("p").html();
+        deletecard = $(this).closest("li");
+        deletingKey = deletecard.find("p").html();
+        delete_index = deletecard.index();
+        task_done.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: 0});
-        deletecard.remove();
-
-        // TODO : Delete corresponding task left thing on local list.
+        deletecard.slideUp(function () {
+            deletecard.remove();
+            console.log(task_done.length);
+            if (task_done.length == 0) {
+                document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner2"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">완료된 일이 아직 없군요!</p></div>';
+            }
+        });
     });
+
 
     $(document).on('click', "#trashed", function () {
-        var deletecard = $(this).closest("li");
-        var deletingKey = deletecard.find("p").html();
-        var delete_index = deletecard.index();
-        console.log(delete_index);
-
-
-        // === Update DB === //
-        task_done.splice(delete_index, 1);
-        ref.child(deletingKey).update({flag_done: -1});
-        deletecard.remove();
-
-
-        // TODO : Delete corresponding task left thing on local list.
+        deletecard = $(this).closest("li");
+        deletingKey = deletecard.find("p").html();
+        delete_index = deletecard.index();
+        $("#TempModal").fadeIn();
+        $("#ModalBox").fadeIn();
+        //console.log(delete_index);
     });
 
-    $(document).on('click', "#expand_message", function () {
+    $(document).on('click', ".DeleteRequest", function () {
+        task_done.splice(delete_index, 1);
+        ref.child(deletingKey).update({flag_done: -1});
+        $("#TempModal").fadeOut();
+        $("#ModalBox").fadeOut();
+        deletecard.slideUp(function () {
+            deletecard.remove();
+            console.log(task_done.length);
+            if (task_done.length == 0) {
+                document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner2"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">완료된 일이 아직 없군요!</p></div>';
+            }
+        });
+
+    });
+
+    $(document).on('click', ".CancelDelete", function () {
+        $("#TempModal").fadeOut();
+        $("#ModalBox").fadeOut();
+    });
+
+    $(document).on('click', "#upperbar, #expand_message", function () {
+        console.log(this);
         var changing_card = $(this).closest("li");
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
 
         if (variable_content.css("display") === "none") {
-            variable_content.show();
-            expand_message.html("Hide" + "<i class='angle up icon'></i>")
+            variable_content.slideDown();
+            expand_message.html("숨기기" + "<i class='angle up icon'></i>")
         } else {
-            variable_content.hide();
-            expand_message.html("Show more" + "<i class='angle down icon'></i>")
+            variable_content.slideUp();
+            expand_message.html("자세히보기" + "<i class='angle down icon'></i>")
         }
     })
 
@@ -136,6 +160,7 @@ $(document).ready(function () {
             request_date: "2018-03-25"
         };
         */
-});
+})
+;
 
 

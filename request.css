@@ -1,3 +1,4 @@
+
 .ui.segment{
 	margin-bottom: 0px !important;
 	padding-top: 0.5em !important;
@@ -36,6 +37,7 @@
 
 .description {
 	margin-top: 5px !important;
+	font-size: 11pt !important;
 }
 
 #variable_content {
@@ -61,9 +63,12 @@ ui.fluid.card {
 
 ul {
     list-style-type: none;
-    margin: 0px;
+    margin: auto;
     padding: 0px;
 	z-index: 1;
+    font-family: "Nanum Gothic";
+	width: 98%;
+
 }
 
 #TempModal {
@@ -73,7 +78,7 @@ ul {
 	right: 0;
 	z-index: 100;
 	background-color: black;
-	opacity: 0.9;
+	opacity: 0.5;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
@@ -87,6 +92,59 @@ ul {
 	margin: 0;
 	position: fixed;
 	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	font-family: "Nanum Gothic" !important;
+}
+
+#EmptySigner {
+	overflow: hidden;
+	text-align: center;
+	z-index: 101;
+	margin: 0;
+	position: fixed;
+	top: 60%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#EmptySigner2 {
+	overflow: hidden;
+	text-align: center;
+	z-index: 101;
+	margin: 0;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#spacer {
+	margin-top: 5px;
+	font-size: 11pt;
+	font-weight: bold;
+	opacity: 0.4;
+}
+
+.ui.label {
+	font-size: 0.87em !important;
+}
+
+.commentsection {
+    font-size: 11pt !important;
+    margin-top: 5px !important;
+}
+
+#place {
+	overflow: hidden;
+	text-align: center;
+	z-index: 101;
+	margin: 0;
+	position: fixed;
+	top: 38%;
 	left: 50%;
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
