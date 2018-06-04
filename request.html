@@ -22,7 +22,7 @@
 <div id="TempModal"></div>
 <div class="ui card centered" id="ModalBox">
     <div class="content">
-        <div class="header" >정말로 거절하시겠습니까?</div>
+        <div class="header">정말로 거절하시겠습니까?</div>
     </div>
     <div class="extra content">
         <div class="ui form">
@@ -73,6 +73,37 @@
         });
     }
 </script>
+
+
+<div class="four compact ui buttons">
+
+    <div class="ui labeled button" tabindex="0">
+        <div class="ui basic grey button" id="SeeDanger">
+            위험
+        </div>
+        <a class="ui red left pointing label" id="label_danger"></a>
+    </div>
+    <div class="ui labeled button" tabindex="0">
+        <div class="ui basic grey button" id="SeeLiving">
+            생활
+        </div>
+        <a class="ui yellow left pointing label" id="label_living"></a>
+    </div>
+    <div class="ui labeled button" tabindex="0">
+        <div class="ui basic grey button" id="SeeRepair">
+            수리
+        </div>
+        <a class="ui left pointing blue label" id="label_repair"></a>
+    </div>
+    <div class="ui labeled button" tabindex="1">
+        <div class="ui basic grey button" id="SeeAll">
+            전체
+        </div>
+        <a class="ui grey left pointing label" id="label_all"></a>
+    </div>
+</div>
+
+
 <div class="ui active centered inline text loader">로딩중</div>
 
 <ul id="ulcontent">

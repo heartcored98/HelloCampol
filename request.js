@@ -47,6 +47,11 @@ $(document).ready(function () {
     var task_done = [];
     var task_trash = [];
     var marker_list = [];
+
+    var count_danger = 0;
+    var count_living = 0;
+    var count_repair = 0;
+
     var deletecard;
     var deletingKey;
     var delete_index;
@@ -65,7 +70,6 @@ $(document).ready(function () {
             snapshot.forEach(function (child) {
                 var child_value = child.val();
                 var key = child.key;
-                var coordinate = child_value.coordinate;
                 var task = {"key": key, "payload": child_value}
                 if (child_value.flag_done == 1) {
                     task_done.push(task);
@@ -77,8 +81,10 @@ $(document).ready(function () {
                     task_trash.push(task);
                 }
             });
+            console.log(count_danger, count_living, count_repair);
             redraw_task_left();
             redraw_marker_left();
+            redraw_label_count();
         });
     };
 
@@ -104,10 +110,9 @@ $(document).ready(function () {
                 $("ul").append(taskbar);
             }
         }
-        // var key = document.getElementById('cardnews').getAttribute('value');
-        // console.log('get key', key);
     };
 
+    // ======= Marker Drawing Part ======= //
     var redraw_marker_left = function () {
         if (task_left.length > 0) {
             var bounds = new google.maps.LatLngBounds();
@@ -137,19 +142,17 @@ $(document).ready(function () {
                     title: data.title
                 });
 
+                // === Add Listener for opening/closing linking task bar === //
                 marker.addListener('click', function () {
-                    console.log('title', this.title);
                     for (var i = 0; i < task_left.length; i++) {
                         if (marker_list[i].title === this.title) {
                             break;
                         }
                     }
-                    console.log('clicking', i);
                     var query_changing_card = "ul li:nth-child(" + String(i + 1) + ")";
                     var changing_card = $(query_changing_card);
                     update_card(changing_card);
                 });
-
                 marker_list.push(marker);
                 bounds.extend(marker.position)
             }
@@ -159,8 +162,58 @@ $(document).ready(function () {
     };
 
 
+    // ======= Label Counting Drawing Part ======= //
+    var redraw_label_count = function () {
+        count_repair = 0;
+        count_living = 0;
+        count_danger = 0;
+        for (var i = 0; i < task_left.length; i++) {
+            var category = task_left[i].payload.category;
+            if (category == '위험') {
+                count_danger += 1;
+            }
+            else if (category == '생활') {
+                count_living += 1;
+            }
+            else {
+                count_repair += 1;
+            }
+        }
+        if (count_danger == 0) {
+            $("SeeDanger").addClass("disabled")
+        }
+        else {
+            $("SeeDanger").removeClass("disabled")
+        }
+        if (count_living == 0) {
+            $("SeeLiving").addClass("disabled")
+        }
+        else {
+            $("SeeLiving").removeClass("disabled")
+        }
+        if (count_repair == 0) {
+            $("SeeRepair").addClass("disabled")
+        }
+        else {
+            $("SeeRepair").removeClass("disabled")
+        }
+        if (count_living + count_danger + count_living == 0) {
+            $("SeeAll").addClass("disabled")
+        }
+        else {
+            $("SeeAll").removeClass("disabled")
+        }
+
+        $("#label_danger").text(count_danger);
+        $("#label_living").text(count_living);
+        $("#label_repair").text(count_repair);
+        $("#label_all").text(count_danger + count_living + count_repair);
+    }
+
+    // === Initialize Task List => Draw Task Card => Draw Marker Pin === //
     update_task();
 
+    // === Open/Close Task Card automatically when called === //
     var update_card = function (changing_card) {
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
@@ -178,7 +231,37 @@ $(document).ready(function () {
         }
     };
 
+    // === Show/Close All Task Card with Given Category === //
+    var show_hide_category = function (category) {
+        var temp_count = 0;
+        for (var i = 0; i < task_left.length; i++) {
+            var query_changing_card = "ul li:nth-child(" + String(i + 1) + ")";
+            var changing_card = $(query_changing_card);
+            temp_count += show_hide_card(changing_card, category);
+        }
+        if (task_left.length > 0 && temp_count == 0) {
+            // Change the html content that certain category has no more tasks
+        }
+    };
 
+    // === Show/Close Single Task Card automatically when called === //
+    var show_hide_card = function (changing_card, category) {
+        var delete_index = changing_card.index();
+        var task_category = task_left[delete_index].payload.category;
+
+        if (task_category == category || category == 'all') {
+            changing_card.slideDown();
+            marker_list[delete_index].setMap(map);
+            return 1
+        }
+        else {
+            changing_card.slideUp();
+            marker_list[delete_index].setMap(null);
+            return 0
+        }
+    };
+
+    // === Listener Function for Clicking Finished Button === //
     $(document).on('click', "#finished", function () {
         deletecard = $(this).closest("li");
         deletingKey = deletecard.find("p").html();
@@ -189,17 +272,16 @@ $(document).ready(function () {
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: 1});
-        console.log("finished");
-        deletecard.slideUp(function(){
+        deletecard.slideUp(function () {
             deletecard.remove();
-            console.log(task_left.length);
+            redraw_label_count();
             if (task_left.length == 0) {
                 document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
             }
         });
-        //deletecard.remove();
     });
 
+    // === Listener Function for Clicking Reject Button === //
     $(document).on('click', "#trashed", function () {
         console.log(document.getElementById('RefuseInput').value);
         deletecard = $(this).closest("li");
@@ -208,9 +290,9 @@ $(document).ready(function () {
         document.getElementById('RefuseInput').value = '';
         $("#TempModal").fadeIn();
         $("#ModalBox").fadeIn();
-
     });
 
+    // === Listener Function for Clicking Delete Request Button === //
     $(document).on('click', ".DeleteRequest", function () {
         console.log("DeleteRequest Sensed");
         // === Update DB === //
@@ -218,9 +300,9 @@ $(document).ready(function () {
         marker_list[delete_index].setMap(null);
         marker_list.splice(delete_index, 1);
         ref.child(deletingKey).update({flag_done: -1});
-        deletecard.slideUp(function(){
+        deletecard.slideUp(function () {
             deletecard.remove();
-            //console.log(task_left.length);
+            redraw_label_count();
             if (task_left.length == 0) {
                 document.getElementById('ulcontent').innerHTML = '<div id="EmptySigner"><img class="logo" src="assets/miniLogo.svg"><p id="spacer">현재 해야될 일이 없군요!</p></div>';
             }
@@ -229,17 +311,34 @@ $(document).ready(function () {
         $("#ModalBox").fadeOut();
     });
 
+    // === Listener Function for Clicking Cancel Delete Request Button === //
     $(document).on('click', ".CancelDelete", function () {
         console.log("CancelDelete Sensed");
         $("#TempModal").fadeOut();
         $("#ModalBox").fadeOut();
     });
 
-
+    // === Listener Function for Clicking Opening/Closing Bar area === //
     $(document).on('click', "#lowerbar", function () {
         var changing_card = $(this).closest("li");
         update_card(changing_card);
     })
-});
+
+    // === Listener Function for Clicking See All Button === //
+    $(document).on('click', "#SeeAll", function () {
+        show_hide_category("all")
+    })
+    $(document).on('click', "#SeeDanger", function () {
+        show_hide_category("위험")
+    })
+    $(document).on('click', "#SeeLiving", function () {
+        show_hide_category("생활")
+    })
+    $(document).on('click', "#SeeRepair", function () {
+        show_hide_category("수리")
+    })
+
+})
+;
 
 
