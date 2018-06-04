@@ -35,6 +35,15 @@
 	margin-top: 100px !important;
 }
 
+.todolistmenu {
+	width: 25% !important;
+    padding-right: 0 !important;
+}
+
+.todolistmenulabel {
+    /*margin-left: 0.5em !important;*/
+}
+
 .description {
 	margin-top: 5px !important;
 	font-size: 11pt !important;

@@ -74,34 +74,25 @@
     }
 </script>
 
-
-<div class="four compact ui buttons">
-
-    <div class="ui labeled button" tabindex="0">
-        <div class="ui red grey button" id="SeeDanger">
-            위험
-        </div>
-        <a class="ui red basic left pointing label" id="label_danger"></a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-        <div class="ui yellow button" id="SeeLiving">
-            생활
-        </div>
-        <a class="ui yellow basic left pointing label" id="label_living"></a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-        <div class="ui blue button" id="SeeRepair">
-            수리
-        </div>
-        <a class="ui blue basic left pointing label" id="label_repair"></a>
-    </div>
-    <div class="ui labeled button" tabindex="1">
-        <div class="ui grey button" id="SeeAll">
-            전체
-        </div>
-        <a class="ui grey basic left pointing label" id="label_all"></a>
-    </div>
+<div class="small ui pointing menu">
+    <a class="active item todolistmenu" id="SeeAll">
+        전체
+        <div class="ui green label todolistmenulabel" id="label_all">-</div>
+    </a>
+    <a class="item todolistmenu" id="SeeDanger">
+        위험
+        <div class="ui label todolistmenulabel" id="label_danger">-</div>
+    </a>
+    <a class="item todolistmenu" id="SeeLiving">
+        생활
+        <div class="ui label todolistmenulabel" id="label_living">-</div>
+    </a>
+    <a class="item todolistmenu" id="SeeRepair">
+        수리
+        <div class="ui label todolistmenulabel" id="label_repair">-</div>
+    </a>
 </div>
+
 
 
 <div class="ui active centered inline text loader">로딩중</div>

@@ -262,6 +262,32 @@ $(document).ready(function () {
         }
     };
 
+    var update_menu_bar = function (button_id, label_id) {
+        document.getElementById("SeeAll").classList.remove("active");
+        document.getElementById("SeeDanger").classList.remove("active");
+        document.getElementById("SeeLiving").classList.remove("active");
+        document.getElementById("SeeRepair").classList.remove("active");
+        document.getElementById(button_id).classList.add("active");
+
+        document.getElementById("label_all").classList.remove("green");
+        document.getElementById("label_danger").classList.remove("red");
+        document.getElementById("label_living").classList.remove("yellow");
+        document.getElementById("label_repair").classList.remove("blue");
+        if (label_id == 'label_all') {
+            document.getElementById("label_all").classList.add("green");
+        }
+        else if (label_id == 'label_danger') {
+            document.getElementById("label_danger").classList.add("red");
+        }
+        else if (label_id == 'label_living') {
+            document.getElementById("label_living").classList.add("yellow");
+        }
+        else  {
+            document.getElementById("label_repair").classList.add("blue");
+        }
+
+    }
+
     // === Listener Function for Clicking Finished Button === //
     $(document).on('click', "#finished", function () {
         deletecard = $(this).closest("li");
@@ -327,15 +353,19 @@ $(document).ready(function () {
 
     // === Listener Function for Clicking See All Button === //
     $(document).on('click', "#SeeAll", function () {
-        show_hide_category("all")
+        update_menu_bar("SeeAll", "label_all");
+        show_hide_category("all", "SeeAll")
     })
     $(document).on('click', "#SeeDanger", function () {
+        update_menu_bar("SeeDanger", "label_danger");
         show_hide_category("위험")
     })
     $(document).on('click', "#SeeLiving", function () {
+        update_menu_bar("SeeLiving", "label_living")
         show_hide_category("생활")
     })
     $(document).on('click', "#SeeRepair", function () {
+        update_menu_bar("SeeRepair", "label_repair")
         show_hide_category("수리")
     })
 
