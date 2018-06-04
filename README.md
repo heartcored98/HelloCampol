@@ -25,7 +25,7 @@ Each css file deals with the layout and style of corresponding page.
 	- `request.js` : load the request from firebase and show it up as a card. "*Undo*" and "*Completing the task*" are supported. When user opens up the request card, corresponding location is shown as bouncing marker in the map.
 
 3. `completed.html` : page for managing the completed task to report to the school.
-	- `request.css` : share css file with request.html as they have similar UI.
+	- `completed.css`
 	- `completed.js` : load the completed request from firebase and show it up as a card. "*Restore the task as not completed*" and "*Deletion*" are supported.
 4. `cardnews.html` : page for convenient uplaod of cardnews to the SNS.
 	- `cardnews#.html` : page for checking out the cardnews slides. We now provides four freuqently-noticed topics chosen from the interview; Traffic safety, Dormitory safety, Drinking safety, and Experiment safety. Users can upload notice to SNS here.
