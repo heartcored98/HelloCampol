@@ -75,21 +75,39 @@ body{
 
 #selectionwrap{
     margin-top:10px
+    overflow:hidden;
 }
 
-.selection img{
+
+
+#snsupload{
+    position:absolute;
+    top:630px;
+    left: 150px;
+    font-size: 17px;
+    font-family: 'Noto Sans CJK KR light';
+}
+
+
+#selectionwrapf{
+    margin-top:10px
+}
+
+.selectionf img{
     margin: auto;
     display: block;
 }
-#snsupload{
+
+#snsuploadf{
     margin-left: 35%;
     font-size: 17px;
     font-family: 'Noto Sans CJK KR light';
 }
 
-#buttonwrap{
+#buttonwrapf{
     margin-top: 30px;
 }
+
 
 .traffic{}
 
@@ -211,6 +229,22 @@ body{
 	font-family: "Nanum Gothic" !important;
 }
 
+#view1{
+
+}
+
+#viewcont{
+    position: absolute;
+    width: 84%;
+    top: 55px;
+    left:8%;
+    word-break:break-all;
+    font-size:8px;
+    font-family: 'Noto Sans CJK KR light';
+    color:grey;
+    opacity:0.9
+}
+
 .header1{
     margin-top:3px;
 
@@ -236,26 +270,86 @@ body{
 	font-family: "Nanum Gothic" !important;
 }
 
-.wrap1{
+#wrap1{
     position:absolute;
-    top: 330px;
-    left:102px
+    top: 339px;
+    left:38px;
+    z-index:3;
+
 }
 
-.wrap2{
+#wrap2{
     position:absolute;
-    top: 410px;
-    left:103px
+    top: 340px;
+    left:210px;
+    z-index:3;
 }
 
-.wrap3{
+#wrap3{
     position:absolute;
-    top: 485px;
-    left:105px
+    top: 415px;
+    left:38px;
+    z-index:3;
 }
 
-.wrap4{
+#wrap4{
     position:absolute;
-    top: 560px;
-    left:103px
+    top: 414px;
+    left:210px;
+    z-index:3;
 }
+
+#trafficimg{
+    position: absolute;
+    z-index:2;
+    top:345px;
+    left:35px;
+}
+
+#dormitoryimg{
+    position: absolute;
+    top:345px;
+    left:205px;
+}
+
+#laboratoryimg{
+    position: absolute;
+    top:420px;
+    left:35px;
+}
+
+#drinkingimg{
+    position: absolute;
+    top:417px;
+    left:205px;
+}
+
+#insertcontent{
+    position: absolute;
+    top:500px;
+}
+
+#inputbox{
+    margin-left:50px;
+    width: 315px;
+    height:100px;
+    border: 2px solid grey;
+    border-radius: 20px;
+    padding:15px;
+    resize: none;
+    font-family: 'Noto Sans CJK KR light';
+    font-size:17px;
+    color:black;
+}
+
+#inputbox:focus{
+    outline: none;
+    border: 2.5px solid black;
+}
+
+#inputbox::placeholder {
+    text-align:center;
+    font-size:20px;
+    padding-top:8px
+}
+
