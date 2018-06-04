@@ -30,26 +30,8 @@
 	flex-direction: row !important;
 }
 
-#map {
-	margin-top : 57px;
-	height: 250px;
-	width: 100%;
-	top : 0px;
-	position : fixed !important;
-	z-index : 10;
-}
-
 .ui.active.centered.inline.text.loader {
-	margin-top: 26em !important;
-}
-
-.todolistmenu {
-	width: 25% !important;
-    padding-right: 0 !important;
-}
-
-.todolistmenulabel {
-    /*margin-left: 0.5em !important;*/
+	margin-top: 100px !important;
 }
 
 .description {
@@ -81,7 +63,7 @@ ui.fluid.card {
 ul {
 	list-style-type: none;
 	margin:auto;
-	margin-top : 24em;
+	margin-top : 5em;
 	padding: 0px;
 	z-index: 1;
 	font-family: "Nanum Gothic";
