@@ -180,7 +180,7 @@ body{
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 20;
     background-color: rgba(29, 31, 33, .95);
     transition: opacity .3s ease-in;
 }
@@ -195,7 +195,7 @@ body{
     position: absolute;
     left: 50%;
     top: 50%;
-    z-index: 2;
+    z-index: 20;
     transform: translate(-50%, -50%);
     max-width: 90%;
     background: transparent url("cardnews/alram/loading.gif") 50% 50% no-repeat;
