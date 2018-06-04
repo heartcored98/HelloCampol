@@ -179,6 +179,7 @@ $(document).ready(function () {
                 count_repair += 1;
             }
         }
+        console.log("count", count_living, count_danger, count_repair)
         if (count_danger == 0) {
             $("SeeDanger").addClass("disabled")
         }
