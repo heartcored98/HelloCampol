@@ -1,3 +1,33 @@
+.ui.segment{
+	margin-bottom: 0px !important;
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;
+}
+
+.ui.menu{
+	margin-top: 0 !important;
+	margin-bottom: 0px !important;
+}
+
+.ui.secondary.pointing.menu .item{
+	width: 50% !important;
+}
+
+.ui.top.fixed.inverted.segment {
+	margin-top:0 !important;
+	top:0;
+	width : 100%;
+	z-index : 10;
+}
+
+.ui.top.inverted.secondary.pointing.menu .item{
+	width: auto !important;
+}
+
+.ui.stackable.menu{
+	flex-direction: row !important;
+}
+
 body{
     font-family: 'Noto Sans CJK KR light';
     font-weight: bold;

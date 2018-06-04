@@ -93,7 +93,8 @@ $(document).ready(function () {
             var template_danger = $("#task-left-template-danger").html();
             var template_repair = $("#task-left-template-repair").html();
             var template_living = $("#task-left-template-living").html();
-            for (var i = 0; i < task_left.length; i++) {
+
+						for (var i = 0; i < task_left.length; i++) {
                 // === Drawing Task Bar === //
                 var data = task_left[i].payload;
                 var category = data.category;
@@ -121,7 +122,7 @@ $(document).ready(function () {
 
                 // === Choosing IconColor === //
                 var category = data.category;
-                //console.log(category);
+								//console.log(category);
                 if (category == '위험') var iconColor = "assets/marker-pin-google-red.png";
                 if (category == '수리') var iconColor = "assets/marker-pin-google-blue.png";
                 if (category == '생활') var iconColor = "assets/marker-pin-google-yellow.png";
