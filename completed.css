@@ -1,3 +1,7 @@
+body
+{
+	overflow: hidden;
+}
 
 .ui.segment{
 	margin-bottom: 0px !important;
@@ -63,12 +67,19 @@ ui.fluid.card {
 ul {
 	list-style-type: none;
 	margin:auto;
-	margin-top : 5em;
 	padding: 0px;
 	z-index: 1;
 	font-family: "Nanum Gothic";
 	width: 98%;
 
+}
+
+#request_wrapper
+{
+	margin: auto;
+	margin-top:4.3em;
+	height : 91%;
+	overflow: auto;
 }
 
 #TempModal {
