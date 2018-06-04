@@ -27,9 +27,29 @@ $(document).ready(function () {
         window.location.href='cardnews_4.html';
     });
 
+    $("#trafficimgf").click(function () {
+        console.log("1")
+        window.location.href='cardnews_1.html';
+    });
+
+    $("#dormitoryimgf").click(function () {
+        window.location.href='cardnews_2.html';
+    });
+
+    $("#laboratoryimgf").click(function () {
+        window.location.href='cardnews_3.html';
+    });
+
+    $("#drinkingimgf").click(function () {
+        window.location.href='cardnews_4.html';
+    });
+
     // ========== upload setting ========= //
 
     $("#snsupload").click(function(){
+        var text = $("#inputbox").val();
+        $("#viewcont").text(text);
+
         deletecard = $(this).closest("li");
         deletingKey = deletecard.find("p").html();
         delete_index = deletecard.index();
