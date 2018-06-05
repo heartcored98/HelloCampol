@@ -1,5 +1,5 @@
-body{
-	overflow: hidden;
+body {
+    overflow: hidden;
 }
 
 .ui.segment {
@@ -31,17 +31,6 @@ body{
 
 .ui.stackable.menu {
     flex-direction: row !important;
-}
-
-
-#wrapper{
-	  position: fixed;
-    width: 100%;
-    top: 56px !important;
-		height : 64px;
-		z-index: 2;
-		background-color : white;
-
 }
 
 #map {
@@ -92,14 +81,14 @@ ui.fluid.card {
     width: 20% !important;
 }
 
-ul {
-	list-style-type: none;
-	margin:auto;
+#wrapper {
+    position: fixed;
+    width: 100%;
+    top: 56px !important;
+    height: 0px;
+    z-index: 2;
+    background-color: white;
 
-	padding: 0px;
-	z-index: 1;
-	font-family: "Nanum Gothic";
-	width: 98%;
 }
 
 .ui.small.pointing.menu {
@@ -107,15 +96,24 @@ ul {
     width: 100%;
     top: 24em !important;
     z-index: 10;
-    background-color : white;
+    background-color: white;
 }
 
-#request_wrapper
-{
-	margin: auto;
-	margin-top:360px;
-	height : 50%;
-	overflow: auto;
+#request_wrapper {
+    margin: auto;
+    margin-top: 360px;
+    height: 50%;
+    overflow: auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: auto;
+
+    padding: 0px;
+    z-index: 1;
+    font-family: "Nanum Gothic";
+    width: 98%;
 }
 
 #TempModal {
