@@ -105,7 +105,7 @@ ul {
 .ui.small.pointing.menu {
     position: fixed;
     width: 100%;
-    top: 21.9em !important;
+    top: 24em !important;
     z-index: 10;
     background-color : white;
 }
@@ -113,7 +113,7 @@ ul {
 #request_wrapper
 {
 	margin: auto;
-	margin-top:325px;
+	margin-top:360px;
 	height : 50%;
 	overflow: auto;
 }
