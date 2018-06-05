@@ -76,7 +76,7 @@ $(document).ready(function () {
                 var data = task_done[i].payload;
                 var category = data.category;
                 data["keyvalue"] = task_done[i].key;
-                if (category == '위험') var taskbar = Mustache.render(template_danger, data);
+                if (category == '긴급') var taskbar = Mustache.render(template_danger, data);
                 if (category == '수리') var taskbar = Mustache.render(template_repair, data);
                 if (category == '생활') var taskbar = Mustache.render(template_living, data);
                 $("ul").append(taskbar);

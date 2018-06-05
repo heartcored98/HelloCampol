@@ -105,7 +105,7 @@ $(document).ready(function () {
                 var data = task_left[i].payload;
                 var category = data.category;
                 data["keyvalue"] = task_left[i].key;
-                if (category == '위험') var taskbar = Mustache.render(template_danger, data);
+                if (category == '긴급') var taskbar = Mustache.render(template_danger, data);
                 if (category == '수리') var taskbar = Mustache.render(template_repair, data);
                 if (category == '생활') var taskbar = Mustache.render(template_living, data);
                 $("ul").append(taskbar);
@@ -128,7 +128,7 @@ $(document).ready(function () {
                 // === Choosing IconColor === //
                 var category = data.category;
 								//console.log(category);
-                if (category == '위험') var iconColor = "assets/marker-pin-google-red.png";
+                if (category == '긴급') var iconColor = "assets/marker-pin-google-red.png";
                 if (category == '수리') var iconColor = "assets/marker-pin-google-blue.png";
                 if (category == '생활') var iconColor = "assets/marker-pin-google-yellow.png";
                 //console.log(iconColor);
@@ -170,7 +170,7 @@ $(document).ready(function () {
         count_danger = 0;
         for (var i = 0; i < task_left.length; i++) {
             var category = task_left[i].payload.category;
-            if (category == '위험') {
+            if (category == '긴급') {
                 count_danger += 1;
             }
             else if (category == '생활') {
@@ -364,7 +364,7 @@ $(document).ready(function () {
     })
     $(document).on('click', "#SeeDanger", function () {
         update_menu_bar("SeeDanger", "label_danger");
-        show_hide_category("위험")
+        show_hide_category("긴급")
     })
     $(document).on('click', "#SeeLiving", function () {
         update_menu_bar("SeeLiving", "label_living")
