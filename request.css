@@ -33,13 +33,6 @@ body{
     flex-direction: row !important;
 }
 
-.ui.small.pointing.menu {
-    position: fixed;
-    width: 100%;
-    top: 24em !important;
-    z-index: 10;
-		background-color : white;
-}
 
 #wrapper{
 	  position: fixed;
@@ -102,16 +95,25 @@ ui.fluid.card {
 ul {
 	list-style-type: none;
 	margin:auto;
+
 	padding: 0px;
 	z-index: 1;
 	font-family: "Nanum Gothic";
 	width: 98%;
 }
 
+.ui.small.pointing.menu {
+    position: fixed;
+    width: 100%;
+    top: 21.9em !important;
+    z-index: 10;
+    background-color : white;
+}
+
 #request_wrapper
 {
 	margin: auto;
-	margin-top:360px;
+	margin-top:325px;
 	height : 50%;
 	overflow: auto;
 }

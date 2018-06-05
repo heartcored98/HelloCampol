@@ -250,6 +250,8 @@ $(document).ready(function () {
     var show_hide_card = function (changing_card, category) {
         var delete_index = changing_card.index();
         var task_category = task_left[delete_index].payload.category;
+        var variable_content = changing_card.find("#variable_content");
+        var expand_message = changing_card.find("#expand_message");
 
         if (task_category == category || category == 'all') {
             changing_card.slideDown();
@@ -259,6 +261,9 @@ $(document).ready(function () {
         else {
             changing_card.slideUp();
             marker_list[delete_index].setMap(null);
+            variable_content.slideUp();
+            expand_message.html("자세히보기" + "<i class='angle down icon'></i>");
+            marker_list[delete_index].setAnimation(null);
             return 0
         }
     };
