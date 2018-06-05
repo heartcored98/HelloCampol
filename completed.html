@@ -20,6 +20,7 @@
 
 </head>
 <body>
+<!-- Confirm Message Box Area -->
 <div id="TempModal"></div>
 <div class="ui card centered" id="ModalBox">
     <div class="content">
@@ -32,12 +33,14 @@
         </div>
     </div>
 </div>
+
+<!-- Top Menu Bar Area -->
 <div class="ui top fixed inverted segment" id="header">
     <div class="ui top inverted secondary pointing menu">
         <a class="item" id="redir_request">
             해야 할 일
         </a>
-			  <a class="active item" id="redir_compl">
+        <a class="active item" id="redir_compl">
             완료된 일
         </a>
         <a class="item" id="redir_notice">
@@ -50,12 +53,36 @@
         </div>
     </div>
 </div>
+
+<!-- Filter Menu Bar Area -->
+<div id="wrapper"></div>
+<div class="ui small pointing menu">
+    <a class="active item todolistmenu" id="SeeAll">
+        전체
+        <div class="ui green label todolistmenulabel" id="label_all">-</div>
+    </a>
+    <a class="item todolistmenu" id="SeeDanger">
+        긴급
+        <div class="ui label todolistmenulabel" id="label_danger">-</div>
+    </a>
+    <a class="item todolistmenu" id="SeeLiving">
+        생활
+        <div class="ui label todolistmenulabel" id="label_living">-</div>
+    </a>
+    <a class="item todolistmenu" id="SeeRepair">
+        수리
+        <div class="ui label todolistmenulabel" id="label_repair">-</div>
+    </a>
+</div>
+
+<!-- Loading Indicator Area -->
 <div class="ui active centered inline text loader" id="place">로딩중</div>
 
-	<div id="request_wrapper">
-<ul id="ulcontent">
-</ul>
-	</div>
+<!--=== Request Task Area ===-->
+<div id="request_wrapper">
+    <ul id="ulcontent">
+    </ul>
+</div>
 
 <!------------------------------Task Done Template------------------------------>
 
@@ -82,8 +109,8 @@
                     [의뢰내용] {{content}}
                 </div>
                 <div class="ui horizontal segments">
-					<div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
-					<!--
+                    <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
+                    <!--
                     <div class="ui segment">{{location}}</div>
                     -->
                 </div>
@@ -125,8 +152,8 @@
                     [의뢰내용] {{content}}
                 </div>
                 <div class="ui horizontal segments">
-					<div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
-					<!--
+                    <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
+                    <!--
                     <div class="ui segment">{{location}}</div>
                     -->
                 </div>
@@ -168,8 +195,8 @@
                     [의뢰내용] {{content}}
                 </div>
                 <div class="ui horizontal segments">
-					<div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
-					<!--
+                    <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
+                    <!--
                     <div class="ui segment">{{location}}</div>
                     -->
                 </div>
