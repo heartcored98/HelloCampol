@@ -116,6 +116,7 @@ $(document).ready(function () {
     var redraw_marker_left = function (arg_category) {
         if (task_left.length > 0) {
             var bounds = new google.maps.LatLngBounds();
+            var marker_count = 0
             for (var i = 0; i < marker_list.length; i++) {
                 marker_list[i].setMap(null);
             }
@@ -156,9 +157,10 @@ $(document).ready(function () {
                 marker_list.push(marker);
                 if (arg_category == category || arg_category == 'all') {
                     bounds.extend(marker.position);
+                    marker_count += 1;
                 }
             }
-            map.fitBounds(bounds);
+            if (marker_count > 0) map.fitBounds(bounds);
             if (map.getZoom() > 16) map.setZoom(15);
         }
     };
