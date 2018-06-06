@@ -4,7 +4,7 @@
 This application is implemented as the part of the project held in CS374 `Introduction to Human-Computer Interaction` in KAIST
 
 ## Author :
-- Bosung Kim ()
+- Bosung Kim (kbs6473@naver.com)
 - Donghoon Han (hanuright@gmail.com)
 - Jaeyoung Jo (whwodud9@gmail.com)
 - Panseok Hwang (kei6040@gmail.com)
