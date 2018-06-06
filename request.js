@@ -37,7 +37,6 @@ $(document).ready(function () {
             snapshot.forEach(function (child) {
                 var key = child.key;
                 ref.child(key).update({flag_done: 0});
-                console.log('reset', key)
             });
         });
     })
@@ -378,7 +377,6 @@ $(document).ready(function () {
     $(document).on('click', "#SeeRepair", function () {
         update_menu_bar("SeeRepair", "label_repair")
         show_hide_category("수리")
-
     })
 
 })

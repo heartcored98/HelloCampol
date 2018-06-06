@@ -31,6 +31,17 @@ $(document).ready(function () {
         window.location.href = 'index.html';
     });
 
+    // ======= Reset Button ======= //
+    $('#reset').click(function () {
+        ref.once("value", function (snapshot) {
+            snapshot.forEach(function (child) {
+                var key = child.key;
+                ref.child(key).update({reply_comment: '[empty]'});
+                console.log('reset', key)
+            });
+        });
+    })
+
     // ======= initialize variables ======= //
     ref = database.ref("TaskList");
     var task_done = [];
@@ -81,6 +92,7 @@ $(document).ready(function () {
                 // === Drawing Task Bar === //
                 var data = task_done[i].payload;
                 var category = data.category;
+                var reply_comment = data.reply_comment;
                 var satisfaction = data.satisfaction;
                 data["keyvalue"] = task_done[i].key;
                 if (category == '긴급') var taskbar = Mustache.render(template_danger, data);
@@ -91,6 +103,10 @@ $(document).ready(function () {
                 $("ul").append(taskbar);
 
                 var label_item = document.getElementsByClassName("label_satisfaction")[i];
+                var reply_content = $(document.getElementsByClassName("reply_content")[i]);
+                var reply_comment = task_done[i].payload.reply_comment;
+
+
                 if (satisfaction == '만족') {
                     label_item.classList.add("green");
                 }
@@ -100,6 +116,11 @@ $(document).ready(function () {
                 else {
                     label_item.classList.add("red");
                 }
+                if (reply_comment != '[empty]') {
+                    reply_content.slideDown();
+                }
+
+
 
 
             }
