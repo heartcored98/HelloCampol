@@ -85,6 +85,52 @@
 </div>
 
 <!------------------------------Task Done Template------------------------------>
+<script id="task-done-template-repair" type="text/template">
+    <li>
+        <p class="invisible">{{keyvalue}}</p>
+        <div id="cardnews" class="ui fluid card">
+            <div class="content">
+                <div class="header"><a class="item" id="upperbar">
+                    <div class="ui blue horizontal label">{{category}}</div>
+                    <div class="ui horizontal basic label label_satisfaction">{{satisfaction}}</div>
+                    {{title}}</a>
+                </div>
+                <div class="ui segments">
+                    <div class="ui segment">
+                        <i class="user circle big icon"></i>{{student}}
+                        <div class="commentsection"><i class="quote left icon"></i> {{comment}} <i
+                                class="quote right icon"></i></div>
+                    </div>
+                    <div class="ui segment reply_content" id="reply_content" style="color: #4183C4; display: none">
+                        <i class="fas fa-angle-double-right"></i> {{reply_comment}}
+                    </div>
+                    <div class="ui segment" id="input_content" style="display: none">
+                        <div class="ui fluid action input input_content_class">
+                            <input class="actual_input" id="actual_input_id" type="text" placeholder="학생에게 답변을 작성할 수 있어요.">
+                            <div class="ui blue button" id="send_message">보내기</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content" id="variable_content">
+                <div class="description" style="color: darkgrey; margin-bottom: 1em !important;">
+                    [의뢰내용] {{content}}<br/>
+                    [위치] {{location}}<br/>
+                </div>
+                <div class="ui two buttons">
+                    <div class="ui grey button" id="trashed">삭제하기</div>
+                    <div class="ui red button" id="undo_finished">완료 취소하기</div>
+                </div>
+            </div>
+
+            <div class="extra content" id="lowerbar">
+                <span class="right floated" id="expand_message">자세히보기<i class="angle down icon"></i></span>
+                <span><i class="check circle outline icon"></i>완료일시: {{done_date}}</span>
+            </div>
+        </div>
+    </li>
+</script>
 
 <script id="task-done-template-danger" type="text/template">
     <li>
@@ -93,14 +139,12 @@
             <div class="content">
                 <div class="header"><a class="item" id="upperbar">
                     <div class="ui red horizontal label">{{category}}</div>
-                    <div class="ui green horizontal basic label">만족</div>
-
+                    <div class="ui horizontal basic label label_satisfaction">{{satisfaction}}</div>
                     {{title}}</a>
                 </div>
 
-                <div>
-                    <span class="commentsection"><i class="comment icon"></i>{{comment}}</span>
-                </div>
+                <span class="commentsection"><i class="comment icon"></i>{{comment}}</span>
+
             </div>
 
             <div class="content" id="variable_content">
@@ -108,11 +152,9 @@
                 <div class="description">
                     [의뢰내용] {{content}}
                 </div>
-                <div class="ui horizontal segments">
+                <div class="ui segments">
                     <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
-                    <!--
-                    <div class="ui segment">{{location}}</div>
-                    -->
+                    <div class="ui segment"><a class="bold">의뢰인</a> | {{student}}</div>
                 </div>
                 <div class="ui two buttons">
                     <div class="ui grey button" id="trashed">삭제하기</div>
@@ -129,48 +171,6 @@
     </li>
 </script>
 
-<script id="task-done-template-repair" type="text/template">
-    <li>
-        <p class="invisible">{{keyvalue}}</p>
-        <div id="cardnews" class="ui fluid card">
-            <div class="content">
-                <div class="header"><a class="item" id="upperbar">
-                    <div class="ui blue horizontal label">{{category}}</div>
-                    <div class="ui green horizontal basic label">만족</div>
-
-                    {{title}}</a>
-                </div>
-
-                <div>
-                    <span class="commentsection"><i class="comment icon"></i>{{comment}}</span>
-                </div>
-            </div>
-
-            <div class="content" id="variable_content">
-                <!--<div id="variable_content">-->
-                <div class="description">
-                    [의뢰내용] {{content}}
-                </div>
-                <div class="ui horizontal segments">
-                    <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
-                    <!--
-                    <div class="ui segment">{{location}}</div>
-                    -->
-                </div>
-                <div class="ui two buttons">
-                    <div class="ui grey button" id="trashed">삭제하기</div>
-                    <div class="ui red button" id="undo_finished">완료 취소하기</div>
-                </div>
-                <!--</div>-->
-            </div>
-
-            <div class="extra content" id="lowerbar">
-                <span class="right floated" id="expand_message">자세히보기<i class="angle down icon"></i></span>
-                <span><i class="check circle outline icon"></i>완료일시: {{done_date}}</span>
-            </div>
-        </div>
-    </li>
-</script>
 
 <script id="task-done-template-living" type="text/template">
     <li>
@@ -179,7 +179,7 @@
             <div class="content">
                 <div class="header"><a class="item" id="upperbar">
                     <div class="ui yellow horizontal label">{{category}}</div>
-                    <div class="ui green horizontal basic label">만족</div>
+                    <div class="ui horizontal basic label label_satisfaction">{{satisfaction}}</div>
 
                     {{title}}</a>
                 </div>
@@ -194,11 +194,9 @@
                 <div class="description">
                     [의뢰내용] {{content}}
                 </div>
-                <div class="ui horizontal segments">
+                <div class="ui segments">
                     <div class="ui segment"><a class="bold">위치</a> | {{location}}</div>
-                    <!--
-                    <div class="ui segment">{{location}}</div>
-                    -->
+                    <div class="ui segment"><a class="bold">의뢰인</a> | {{student}}</div>
                 </div>
                 <div class="ui two buttons">
                     <div class="ui grey button" id="trashed">삭제하기</div>

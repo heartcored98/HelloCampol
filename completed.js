@@ -81,15 +81,29 @@ $(document).ready(function () {
                 // === Drawing Task Bar === //
                 var data = task_done[i].payload;
                 var category = data.category;
+                var satisfaction = data.satisfaction;
                 data["keyvalue"] = task_done[i].key;
                 if (category == '긴급') var taskbar = Mustache.render(template_danger, data);
                 if (category == '수리') var taskbar = Mustache.render(template_repair, data);
                 if (category == '생활') var taskbar = Mustache.render(template_living, data);
+
+
                 $("ul").append(taskbar);
+
+                var label_item = document.getElementsByClassName("label_satisfaction")[i];
+                if (satisfaction == '만족') {
+                    label_item.classList.add("green");
+                }
+                else if (satisfaction == '보통') {
+                    label_item.classList.add("yellow");
+                }
+                else {
+                    label_item.classList.add("red");
+                }
+
+
             }
         }
-        // var key = document.getElementById('cardnews').getAttribute('value');
-        // console.log('get key', key);
     };
 
 
@@ -146,15 +160,29 @@ $(document).ready(function () {
 
     // === Open/Close Task Card automatically when called === //
     var update_card = function (changing_card) {
+        console.log("inside update")
+
         var variable_content = changing_card.find("#variable_content");
         var expand_message = changing_card.find("#expand_message");
+        var input_content = changing_card.find("#input_content");
         var delete_index = changing_card.index();
+
+        var reply_comment = task_done[delete_index].payload.reply_comment;
+        var reply_content = changing_card.find("#reply_content");
+
+        console.log(reply_comment);
+        if (reply_comment != '[empty]') {
+            reply_content.slideDown();
+        }
+
 
         if (variable_content.css("display") === "none") {
             variable_content.slideDown();
+            input_content.slideDown();
             expand_message.html("숨기기" + "<i class='angle up icon'></i>")
         } else {
             variable_content.slideUp();
+            input_content.slideUp();
             expand_message.html("자세히보기" + "<i class='angle down icon'></i>");
         }
     };
@@ -176,8 +204,11 @@ $(document).ready(function () {
     var show_hide_card = function (changing_card, category) {
         var delete_index = changing_card.index();
         var task_category = task_done[delete_index].payload.category;
+
         var variable_content = changing_card.find("#variable_content");
+        var input_content = changing_card.find("#input_content");
         var expand_message = changing_card.find("#expand_message");
+
 
         if (task_category == category || category == 'all') {
             changing_card.slideDown();
@@ -186,6 +217,7 @@ $(document).ready(function () {
         else {
             changing_card.slideUp();
             variable_content.slideUp();
+            input_content.slideUp();
             expand_message.html("자세히보기" + "<i class='angle down icon'></i>");
             return 0
         }
@@ -215,6 +247,31 @@ $(document).ready(function () {
             document.getElementById("label_repair").classList.add("blue");
         }
     }
+
+    $(document).on('click', "#send_message", function () {
+        deletecard = $(this).closest("li");
+        deletingKey = deletecard.find("p").html();
+        delete_index = deletecard.index();
+
+        var input_element = document.getElementsByClassName("actual_input")[delete_index];
+        var input_content = document.getElementsByClassName("input_content_class")[delete_index];
+        var reply_element = $(document.getElementsByClassName("reply_content")[delete_index]);
+
+        if (input_element.value == '') {
+            input_content.classList.add("error");
+            input_element.placeholder = "문구를 입력해주세요."
+        }
+        else {
+            ref.child(deletingKey).update({reply_comment: input_element.value});
+            input_element.placeholder = "학생에게 답변을 작성할 수 있어요."
+            reply_element.slideUp(function () {
+                    reply_element.html('<i class="fas fa-angle-double-right"></i>' + ' ' + input_element.value);
+                    input_element.value = '';
+                    reply_element.slideDown();
+                }
+            );
+        }
+    });
 
 
     $(document).on('click', "#undo_finished", function () {
@@ -263,37 +320,28 @@ $(document).ready(function () {
 
     $(document).on('click', "#upperbar, #expand_message", function () {
         var changing_card = $(this).closest("li");
-        var variable_content = changing_card.find("#variable_content");
-        var expand_message = changing_card.find("#expand_message");
-
-        if (variable_content.css("display") === "none") {
-            variable_content.slideDown();
-            expand_message.html("숨기기" + "<i class='angle up icon'></i>")
-        } else {
-            variable_content.slideUp();
-            expand_message.html("자세히보기" + "<i class='angle down icon'></i>")
-        }
+        update_card(changing_card);
     });
 
-    // === Listener Function for Clicking See All Button === //
-    $(document).on('click', "#SeeAll", function () {
-        update_menu_bar("SeeAll", "label_all");
-        show_hide_category("all", "SeeAll")
-    })
-    $(document).on('click', "#SeeDanger", function () {
-        update_menu_bar("SeeDanger", "label_danger");
-        show_hide_category("긴급")
-    })
-    $(document).on('click', "#SeeLiving", function () {
-        update_menu_bar("SeeLiving", "label_living")
-        show_hide_category("생활")
-    })
-    $(document).on('click', "#SeeRepair", function () {
-        update_menu_bar("SeeRepair", "label_repair")
-        show_hide_category("수리")
-    })
 
-    // === Listener Function for Clicking See All Button === //
+    $(document).on('keyup', 'input', "#actual_input_id", function () {
+        deletecard = $(this).closest("li");
+        deletingKey = deletecard.find("p").html();
+        delete_index = deletecard.index();
+
+        var input_element = document.getElementsByClassName("actual_input")[delete_index];
+        var input_content = document.getElementsByClassName("input_content_class")[delete_index];
+
+        if (input_element.value != "") {
+            input_content.classList.remove("error");
+        }
+        else {
+            input_content.classList.add("error");
+        }
+
+    });
+
+// === Listener Function for Clicking See All Button === //
     $(document).on('click', "#SeeAll", function () {
         update_menu_bar("SeeAll", "label_all");
         show_hide_category("all", "SeeAll")
