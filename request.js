@@ -83,7 +83,7 @@ $(document).ready(function () {
             });
             console.log(count_danger, count_living, count_repair);
             redraw_task_left();
-            redraw_marker_left();
+            redraw_marker_left("all");
             redraw_label_count();
         });
     };
@@ -100,7 +100,7 @@ $(document).ready(function () {
             var template_repair = $("#task-left-template-repair").html();
             var template_living = $("#task-left-template-living").html();
 
-						for (var i = 0; i < task_left.length; i++) {
+            for (var i = 0; i < task_left.length; i++) {
                 // === Drawing Task Bar === //
                 var data = task_left[i].payload;
                 var category = data.category;
@@ -114,7 +114,7 @@ $(document).ready(function () {
     };
 
     // ======= Marker Drawing Part ======= //
-    var redraw_marker_left = function () {
+    var redraw_marker_left = function (arg_category) {
         if (task_left.length > 0) {
             var bounds = new google.maps.LatLngBounds();
             for (var i = 0; i < marker_list.length; i++) {
@@ -127,7 +127,7 @@ $(document).ready(function () {
 
                 // === Choosing IconColor === //
                 var category = data.category;
-								//console.log(category);
+                //console.log(category);
                 if (category == '긴급') var iconColor = "assets/marker-pin-google-red.png";
                 if (category == '수리') var iconColor = "assets/marker-pin-google-blue.png";
                 if (category == '생활') var iconColor = "assets/marker-pin-google-yellow.png";
@@ -155,7 +155,9 @@ $(document).ready(function () {
                     update_card(changing_card);
                 });
                 marker_list.push(marker);
-                bounds.extend(marker.position)
+                if (arg_category == category || arg_category == 'all') {
+                    bounds.extend(marker.position);
+                }
             }
             map.fitBounds(bounds);
             if (map.getZoom() > 16) map.setZoom(15);
@@ -244,6 +246,7 @@ $(document).ready(function () {
         if (task_left.length > 0 && temp_count == 0) {
             // Change the html content that certain category has no more tasks
         }
+        redraw_marker_left(category);
     };
 
     // === Show/Close Single Task Card automatically when called === //
@@ -288,7 +291,7 @@ $(document).ready(function () {
         else if (label_id == 'label_living') {
             document.getElementById("label_living").classList.add("yellow");
         }
-        else  {
+        else {
             document.getElementById("label_repair").classList.add("blue");
         }
 
@@ -360,19 +363,22 @@ $(document).ready(function () {
     // === Listener Function for Clicking See All Button === //
     $(document).on('click', "#SeeAll", function () {
         update_menu_bar("SeeAll", "label_all");
-        show_hide_category("all", "SeeAll")
+        show_hide_category("all", "SeeAll");
     })
     $(document).on('click', "#SeeDanger", function () {
         update_menu_bar("SeeDanger", "label_danger");
-        show_hide_category("긴급")
+        show_hide_category("긴급");
+
     })
     $(document).on('click', "#SeeLiving", function () {
         update_menu_bar("SeeLiving", "label_living")
         show_hide_category("생활")
+
     })
     $(document).on('click', "#SeeRepair", function () {
         update_menu_bar("SeeRepair", "label_repair")
         show_hide_category("수리")
+
     })
 
 })
