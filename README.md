@@ -9,8 +9,13 @@ This application is implemented as the part of the project held in CS374 `Introd
 - Jaeyoung Jo (whwodud9@gmail.com)
 - Panseok Hwang (kei6040@gmail.com)
 
-## Motivation(What is it for?)
+## Motivation (What is it for?)
 KAIST has in-campus police, so-called **CamPol** (Campus Police), who helps ensure the security and safety of students. However, because of the several intermediate steps to communication between students and them, Campol needs **direct** way of communication to respond to the requests as soon as possible. One of the other important tasks, on the other hand, is raising the safety awareness of students, so we additionally consider the way to spread out safety-related information through SNS conveniently, and **influentially** as well.
+
+
+## Screenshots  
+
+## Features  
 
 ## Implementation Structure
 Each page has a navigation bar, so users can move to every page.
@@ -30,4 +35,5 @@ Each css file deals with the layout and style of corresponding page.
 4. `cardnews.html` : page for convenient uplaod of cardnews to the SNS.
 	- `cardnews#.html` : page for checking out the cardnews slides. We now provides four freuqently-noticed topics chosen from the interview; Traffic safety, Dormitory safety, Drinking safety, and Experiment safety. Users can upload notice to SNS here.
 	- `cardnews.css`
-	- `cardnews.js` : *Swipeslider* gives the affordance for users to slide the cardnews pages. **SNS upload is not yet supported.**
+	- `cardnews.js` : *Swipeslider* gives the affordance for users to slide the cardnews pages. **SNS upload is not yet supported.**  
+
