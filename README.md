@@ -1,7 +1,16 @@
 **HelloCampol**
 ===============
 
-This application is implemented as the part of the project held in CS374 `Introduction to Human-Computer Interaction` in KAIST
+This application is implemented as the part of the project held in CS374 `Introduction to Human-Computer Interaction` in KAIST  
+<br>
+<p align="center"> 
+<a href='http://www.youtube.com/watch?v=eFtyL-tN_JA'>
+<img src=http://img.youtube.com/vi/eFtyL-tN_JA/0.jpg width="600"> 
+</a>
+</p>
+<p align="center"> 
+  HelloCampol Introduction Video on Youtube. (Click image to view)    
+</p>
 
 ## Author :
 - Bosung Kim (kbs6473@naver.com)
@@ -14,6 +23,45 @@ KAIST has in-campus police, so-called **CamPol** (Campus Police), who helps ensu
 
 
 ## Screenshots  
+
+### Main Page  
+<p align="center"> 
+<img src="screenshot/screenshot_1.png" width="300"> 
+</p>
+<p align="center"> 
+  The user can visit desired pages directly through main page. <br> It has pages for managing incoming requests, completed requests and sns newscard.     
+</p>
+<br>
+
+### Incoming Requests Management 
+<p align="center"> 
+<img src="screenshot/screenshot_2_1.png" width="300">
+<img src="screenshot/screenshot_2_2.png" width="300">
+</p>
+<p align="center"> 
+  The user can identify geographical distribution of the incoming requests <br> with their request types and details. Also the campol can mark an individual request as completed.      
+</p>  
+<br>
+
+### Completed Requests Management  
+<p align="center"> 
+<img src="screenshot/screenshot_3_1.png" width="300">
+<img src="screenshot/screenshot_3_2.png" width="300">
+</p>
+<p align="center"> 
+  The user can identify completed requests with user's feedback and their satisfactory level. <br> Also the campol can reply to the feedback.  
+</p>  
+<br>
+
+### SNS Newscard Management  
+<br>
+<p align="center"> 
+<img src="screenshot/screenshot_4_1.png" width="300">
+<img src="screenshot/screenshot_4_2.png" width="300">
+</p>
+<p align="center"> 
+  The user can deliver cardnews with the messages to the students easily by uploading preset cardnews to SNS.  
+</p>  
 
 ## Features  
 
